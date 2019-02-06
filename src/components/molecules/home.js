@@ -8,7 +8,7 @@ const StyledHome = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin-bottom: 350px;
+  margin-bottom: 275px;
 
   h1 {
     font-size: 50px;
