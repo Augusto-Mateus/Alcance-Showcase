@@ -1,0 +1,11 @@
+@import url("https://fonts.googleapis.com/css?family=Asap");
+
+body {
+  background-image: url("./static/Home&Segmentação.jpg");
+  background-repeat: no-repeat, repeat;
+  background-size: cover;
+  font-family: "Asap", sans-serif;
+  height: 100vh;
+  margin: 0;
+  width: 100%;
+}

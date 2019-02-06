@@ -4,18 +4,19 @@ import styled from "styled-components";
 import Section from "../particles/section";
 
 const sections = [
-  "Home",
-  "Segmentação",
-  "Publico Alvo",
-  "Ranking",
-  "Duração de Campanha",
-  "Pagamento",
-  "Contas"
+  "HOME",
+  "SEGMENTAÇÃO",
+  "PÚBLICO ALVO",
+  "RANKING",
+  "DURAÇÃO DE CAMPANHA",
+  "PAGAMENTO",
+  "CONTAS"
 ];
 
-const StyledMenu = styled.menu`
+const StyledMenu = styled.div`
   display: flex;
   justify-content: space-between;
+  margin-bottom: 100px;
   padding: 0;
   width: 100%;
 `;

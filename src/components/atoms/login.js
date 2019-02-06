@@ -22,6 +22,12 @@ const StyledLogin = styled.div`
     border: 0.5px solid #ccc;
     width: 75%;
   }
+
+  a {
+    color: #999;
+    font-size: 10px;
+    text-decoration-line: none;
+  }
 `;
 
 class Login extends Component {
@@ -32,10 +38,10 @@ class Login extends Component {
         <p>ou</p>
         <Input type="email" placeholder="E-mail" />
         <Input type="password" placeholder="Senha" />
-        <Button name="Entrar" type="submit" />
+        <Button name="ENTRAR" type="submit" />
         <hr />
-        <p>Não possui conta?</p>
-        <Button name="Cadastre-se" />
+        <a href="sample">Não possui conta?</a>
+        <Button name="CADASTRAR-SE" />
       </StyledLogin>
     );
   }
