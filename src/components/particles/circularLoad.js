@@ -56,7 +56,7 @@ class CircularLoad extends Component {
       <Graficos>
         {loads.map(load => {
           return (
-            <Grafico>
+            <Grafico key={load}>
               <Circular>
                 <p>100%</p>
                 <p>Completo</p>

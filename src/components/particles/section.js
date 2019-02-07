@@ -20,7 +20,7 @@ const StyledSection = styled.a`
 
 class Section extends Component {
   render() {
-    return <StyledSection href="sample">{this.props.section}</StyledSection>;
+    return <StyledSection href="#">{this.props.section}</StyledSection>;
   }
 }
 

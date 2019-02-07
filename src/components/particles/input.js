@@ -14,6 +14,7 @@ class Input extends Component {
   render() {
     return (
       <StyledInput
+        onChange={this.props.event}
         placeholder={this.props.placeholder}
         type={this.props.type}
       />

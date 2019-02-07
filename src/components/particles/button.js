@@ -12,11 +12,11 @@ const StyledButton = styled.button`
   width: 50%;
 `;
 
-//height: ${this.props.height};
-
 class Button extends Component {
   render() {
-    return <StyledButton>{this.props.name}</StyledButton>;
+    return (
+      <StyledButton onClick={this.props.event}>{this.props.name}</StyledButton>
+    );
   }
 }
 
