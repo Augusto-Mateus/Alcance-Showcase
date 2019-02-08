@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 import CircularLoad from "../particles/circularLoad";
 import LoadBar from "../particles/loadBar";
+import NextSectionButton from "../particles/nextSectionButton";
 
 const StyledSegmentacao = styled.div`
   align-items: center;
@@ -31,6 +32,7 @@ class Segmentacao extends Component {
         <LoadBar />
         <Txt>Ótimo, estamos quase lá!</Txt>
         <CircularLoad />
+        <NextSectionButton />
       </StyledSegmentacao>
     );
   }

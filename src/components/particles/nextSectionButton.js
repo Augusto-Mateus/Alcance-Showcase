@@ -1,19 +1,33 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 
-const StyledNextSectionButton = styled.a`
-  background-color: transparent;
-  border: solid #fff 2px;
-  border-radius: 40px;
+import Arrow from "../../static/Arrow.png";
+
+const StyledNextSectionButton = styled.button`
+  align-items: flex-end;
+  background-color: rgba(100, 100, 100, 0.3);
+  border: solid #fff 3px;
+  border-radius: 100px;
   color: #fff;
+  display: flex;
   font-size: 40px;
-  padding: 5px 17px 5px 17px;
-  text-decoration-line: none;
+  height: 100px;
+  justify-content: center;
+  width: 100px;
+
+  img {
+    height: 65px;
+    margin-top: 20px;
+  }
 `;
 
 class NextSectionButton extends Component {
   render() {
-    return <StyledNextSectionButton href="#">v</StyledNextSectionButton>;
+    return (
+      <StyledNextSectionButton href="#">
+        <img alt="arrow" src={Arrow} />
+      </StyledNextSectionButton>
+    );
   }
 }
 

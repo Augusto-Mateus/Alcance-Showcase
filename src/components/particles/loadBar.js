@@ -9,7 +9,7 @@ const StyledLoadBar = styled.div`
   flex-direction: column;
 
   h1 {
-    background: -webkit-linear-gradient(#00dfc5, #069dc8);
+    background: linear-gradient(to right, #00dfc5, #069dc8);
     font-size: 80px;
     font-weight: bolder;
     margin: 0 0 0 0;

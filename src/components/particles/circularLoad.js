@@ -34,7 +34,7 @@ const Circular = styled.div`
   flex-direction: column;
   height: 180px;
   justify-content: center;
-  margin: 20px 20px 0 20px;
+  margin: 20px 20px 7px 20px;
   width: 180px;
   transform: rotate(0);
   transition: ease 0.3s;
