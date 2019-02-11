@@ -14,7 +14,8 @@ class Maps extends Component {
 
   renderMap = () => {
     loadScript(
-      "https://maps.googleapis.com/maps/api/js?key=AIzaSyD2atUYInE6aLgfmXoJeaV11dTq2i3szAA&callback=initMap"
+      "https://maps.googleapis.com/maps/api/js?key=#&callback=initMap"
+      // AIzaSyD2atUYInE6aLgfmXoJeaV11dTq2i3szAA
     );
     window.initMap = this.initMap;
   };
@@ -30,9 +31,6 @@ class Maps extends Component {
   render() {
     return <StyledMaps title="Google Maps" id="map" />;
   }
-}
-
-{
 }
 
 function loadScript(url) {
