@@ -10,7 +10,7 @@ const Main = styled.div`
   justify-content: center;
 `;
 
-const StyledRanking = styled.div`
+const SubDiv = styled.div`
   align-items: center;
   color: #fff;
   display: flex;
@@ -19,7 +19,7 @@ const StyledRanking = styled.div`
   padding: 80px 0 80px 0;
 `;
 
-const Values = styled.div`
+const SubDivA = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -52,7 +52,7 @@ const Input = styled.input`
   }
 `;
 
-const Rank = styled.div`
+const SubDivB = styled.div`
   background-color: #f4d8dc;
   background-image: linear-gradient(
     to top,
@@ -72,19 +72,19 @@ class Ranking extends Component {
   render() {
     return (
       <Main>
-        <StyledRanking>
-          <Values>
+        <SubDiv>
+          <SubDivA>
             <p>
               Lorem <br /> impsum dolor <br /> sit amet.
             </p>
-            <Input placeholder="R$2.000,00" />
+            <Input placeholder="R$2.000,00" type="number" step="0.01" />
             <p>
               Voce pode digitar valores diferentes <br /> para ver outras opções
               de anuncio.
             </p>
-          </Values>
-          <Rank />
-        </StyledRanking>
+          </SubDivA>
+          <SubDivB />
+        </SubDiv>
         <NextSectionButton />
       </Main>
     );

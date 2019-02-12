@@ -29,7 +29,7 @@ const Main = styled.div`
   }
 `;
 
-const Info = styled.div`
+const SubDiv = styled.div`
   align-items: center;
   background-color: #fff;
   border-radius: 50px;
@@ -39,7 +39,7 @@ const Info = styled.div`
   width: 90%;
 `;
 
-const Icon = styled.div`
+const SubDivA = styled.div`
   align-items: center;
   background: linear-gradient(#01d2c6, #05aac7);
   border-radius: 50px;
@@ -53,7 +53,7 @@ const Icon = styled.div`
   }
 `;
 
-const SubDiv = styled.div`
+const SubDivB = styled.div`
   align-items: center;
   background-color: #fff;
   color: #626262;
@@ -80,22 +80,22 @@ class DuracaoDeCampanha extends Component {
     return (
       <Main>
         <p>Escolha duração de campanha</p>
-        <Info>
-          <Icon>
+        <SubDiv>
+          <SubDivA>
             <img src={Calendar} alt="Calendar" />
-          </Icon>
-          <SubDiv>
+          </SubDivA>
+          <SubDivB>
             <div>
               <p>Data de Inicio:</p>
-              <input type="date" />
+              <input type="date" value="2019-02-12" />
             </div>
             <hr />
             <div>
               <p>Data de Encerramento:</p>
-              <input type="date" />
+              <input type="date" value="2019-02-12" />
             </div>
-          </SubDiv>
-        </Info>
+          </SubDivB>
+        </SubDiv>
         <p>Tempo de duração da campanha</p>
         <h4>Valor em dias de duração</h4>
         <span />

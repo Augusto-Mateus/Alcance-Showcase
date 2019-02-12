@@ -1,21 +1,20 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 
-import CircularLoad from "../particles/circularLoad";
+import CircularGraph from "../particles/circularGraph";
 import LoadBar from "../particles/loadBar";
 import NextSectionButton from "../particles/nextSectionButton";
 
-const StyledSegmentacao = styled.div`
+const Main = styled.div`
   align-items: center;
   display: flex;
   flex-direction: column;
-`;
-
-const Section = styled.p`
-  color: #069dc8;
-  font-size: 30px;
-  font-weight: bold;
-  margin-bottom: 5px;
+  h1 {
+    color: #069dc8;
+    font-size: 50px;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
 `;
 
 const Txt = styled.p`
@@ -26,14 +25,14 @@ const Txt = styled.p`
 class Segmentacao extends Component {
   render() {
     return (
-      <StyledSegmentacao>
-        <Section>Segmentação</Section>
+      <Main>
+        <h1>Segmentação</h1>
         <br />
         <LoadBar />
         <Txt>Ótimo, estamos quase lá!</Txt>
-        <CircularLoad />
+        <CircularGraph />
         <NextSectionButton />
-      </StyledSegmentacao>
+      </Main>
     );
   }
 }

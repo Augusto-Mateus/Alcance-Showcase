@@ -15,7 +15,7 @@ const Main = styled.div`
   padding: 0;
 `;
 
-const StyledPublicoAlvo = styled.div`
+const SubDiv = styled.div`
   display: flex;
   justify-content: space-between;
   margin: 0 0 85px 0;
@@ -35,7 +35,7 @@ class PublicoAlvo extends Component {
   render() {
     return (
       <Main>
-        <StyledPublicoAlvo>
+        <SubDiv>
           <div>
             <StyledText>
               Qual a idade <br /> do público alvo?
@@ -43,7 +43,7 @@ class PublicoAlvo extends Component {
             <AgeRange />
           </div>
           <Iframe title="Maps">Iframe GoogleMaps</Iframe>
-        </StyledPublicoAlvo>
+        </SubDiv>
         <NextSectionButton />
       </Main>
     );

@@ -4,20 +4,18 @@ import Logo from "../../static/Logo.png";
 
 import Login from "../atoms/login";
 
-const StyledHome = styled.div`
+const Main = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   margin-bottom: 275px;
-
   h1 {
     font-size: 50px;
   }
 `;
 
-const LogoAndSlogam = styled.div`
+const SubDiv = styled.div`
   color: #fff;
-
   img {
     height: 60px;
     margin-top: -40px;
@@ -28,15 +26,15 @@ const LogoAndSlogam = styled.div`
 class Home extends Component {
   render() {
     return (
-      <StyledHome>
-        <LogoAndSlogam>
+      <Main>
+        <SubDiv>
           <img alt="Logo" src={Logo} />
           <h1>
             Uma nova maneira <br /> de alcançar.
           </h1>
-        </LogoAndSlogam>
+        </SubDiv>
         <Login />
-      </StyledHome>
+      </Main>
     );
   }
 }

@@ -6,7 +6,7 @@ import Button from "../particles/button";
 import FacebookButton from "../particles/facebookButton";
 import Input from "../particles/input";
 
-const StyledLogin = styled.div`
+const Main = styled.div`
   align-items: center;
   background-color: #fff;
   border-radius: 50px;
@@ -72,7 +72,7 @@ class Login extends Component {
 
   render() {
     return (
-      <StyledLogin>
+      <Main>
         <FacebookButton name="Login with Facebook" />
         <p>ou</p>
         <Input type="email" event={this.handleEmail} placeholder="E-mail" />
@@ -85,7 +85,7 @@ class Login extends Component {
         <hr />
         <a href="sample">Não possui conta?</a>
         <Button name="CADASTRAR-SE" />
-      </StyledLogin>
+      </Main>
     );
   }
 }

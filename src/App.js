@@ -8,6 +8,7 @@ import PublicoAlvo from "./components/molecules/publicoAlvo";
 import Ranking from "./components/molecules/ranking";
 import DuracaoDeCampanha from "./components/molecules/duracaoDeCampanha";
 import Pagamento from "./components/molecules/pagamento";
+import Contas from "./components/molecules/contas";
 
 const LandingPage = styled.div`
   padding: 40px 160px 40px 160px;
@@ -24,6 +25,7 @@ class App extends Component {
         <Ranking />
         <DuracaoDeCampanha />
         <Pagamento />
+        <Contas />
       </LandingPage>
     );
   }

@@ -4,26 +4,26 @@ import Ellipse from "../../static/Ellipse.png";
 
 const loads = ["load 1", "load 2", "load 3", "load 4"];
 
-const Graficos = styled.div`
+const Main = styled.div`
   align-items: center;
-  color: #fff;
   display: flex;
+  color: #fff;
   flex-direction: row;
-  margin-top: 120px;
+  margin-top: 122px;
 
   p {
     margin-top: 20px;
   }
 `;
 
-const Grafico = styled.div`
+const SubDiv = styled.div`
   align-items: center;
   display: flex;
   flex-direction: column;
   justify-content: center;
 `;
 
-const Circular = styled.div`
+const SubDiv1 = styled.div`
   align-items: center;
   background: url(${Ellipse});
   background-color: rgba(100, 100, 100, 0.3);
@@ -36,38 +36,34 @@ const Circular = styled.div`
   justify-content: center;
   margin: 20px 20px 7px 20px;
   width: 180px;
-  transform: rotate(0);
-  transition: ease 0.3s;
-
   p:first-child {
     font-size: 40px;
     font-weight: bold;
     margin: 0 0 0 0;
   }
-
   p:last-child {
     margin: 0 0 0 0;
   }
 `;
 
-class CircularLoad extends Component {
+class CircularGraph extends Component {
   render() {
     return (
-      <Graficos>
+      <Main>
         {loads.map(load => {
           return (
-            <Grafico key={load}>
-              <Circular>
+            <SubDiv key={load}>
+              <SubDiv1>
                 <p>100%</p>
                 <p>Completo</p>
-              </Circular>
+              </SubDiv1>
               <p>{load}</p>
-            </Grafico>
+            </SubDiv>
           );
         })}
-      </Graficos>
+      </Main>
     );
   }
 }
 
-export default CircularLoad;
+export default CircularGraph;

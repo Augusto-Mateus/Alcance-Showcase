@@ -10,12 +10,103 @@ const Main = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  margin-top: 150px;
+  width: 100%;
+`;
+
+const SubDiv = styled.div`
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+`;
+
+const SubDivImage = styled.div`
+  align-items: center;
+  background-color: #0000c1;
+  border-top-left-radius: 40px;
+  border-bottom-left-radius: 40px;
+  display: flex;
+  height: 250px;
+  justify-content: space-around;
+  width: 50%;
+  img {
+    height: 100px;
+    width: 100px;
+  }
+  p {
+    color: #fff;
+    font-size: 40px;
+    font-weight: bold;
+    margin-left: -100px;
+  }
+`;
+
+const SubDivInformation = styled.div`
+  align-items: center;
+  background-color: #6f43e0;
+  border-radius: 35px;
+  display: flex;
+  flex-direction: column;
+  height: 400px;
+  justify-content: space-around;
+  margin: 0px;
+  padding: 0px;
+  text-align: center;
+  width: 50%;
+  div:first-child {
+    align-items: center;
+    background-color: #fff;
+    border-radius: 33px;
+    color: #626262;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    justify-content: center;
+    position: relative;
+    width: 100%;
+    z-index: 1;
+    p {
+      margin: 5px;
+    }
+    hr {
+      border: 1px solid #848484;
+      margin: 40px;
+      width: 50%;
+    }
+    h1 {
+      margin: 0px;
+      font-size: 22px;
+    }
+  }
+  div:last-child {
+    align-items: center;
+    background-color: #6f43e0;
+    border-radius: 35px;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    height: 50vh;
+    justify-content: center;
+    width: 100%;
+    p {
+      margin: 5px;
+    }
+    h1 {
+      font-size: 22px;
+      margin: 0px;
+    }
+  }
 `;
 
 const PaypalButton = styled.button`
   border: none;
   border-radius: 100px;
   height: 0px;
+  margin-bottom: 120px;
+  margin-left: 30vw;
+  margin-top: 40px;
   width: 0px;
   img {
     height: 60px;
@@ -28,25 +119,27 @@ class Pagamento extends Component {
   render() {
     return (
       <Main>
-        <div>
-          <div>
+        <SubDiv>
+          <SubDivImage>
             <img src={Cartao} alt="Cartão" />
-            <p>Informações de pagamento</p>
-          </div>
-          <div>
+            <p>
+              Informações <br /> de pagamento
+            </p>
+          </SubDivImage>
+          <SubDivInformation>
             <div>
               <p>Quantidade de Anuncios</p>
-              <p>Nº de Anuncios</p>
+              <h1>Nº de Anuncios</h1>
               <hr />
               <p>Tempo de Vinculação</p>
-              <p>TEMPO</p>
+              <h1>TEMPO</h1>
             </div>
             <div>
               <p>Total a pagar</p>
-              <p>TOTAL</p>
+              <h1>R$ 2.000,00</h1>
             </div>
-          </div>
-        </div>
+          </SubDivInformation>
+        </SubDiv>
         <PaypalButton>
           <img src={Paypal} alt="Paypal" />
         </PaypalButton>
