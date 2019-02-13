@@ -1,11 +1,9 @@
 @import url("https://fonts.googleapis.com/css?family=Asap");
-
+html {
+  scroll-behavior: smooth;
+}
 body {
-  background-image: url("./static/LandingPage.jpg");
-  background-repeat: no-repeat, repeat;
-  background-size: cover;
   font-family: "Asap", sans-serif;
   margin: auto;
-  padding: 0;
   width: 100%;
 }

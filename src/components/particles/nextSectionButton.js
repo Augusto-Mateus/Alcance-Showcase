@@ -13,6 +13,7 @@ const StyledNextSectionButton = styled.button`
   font-size: 40px;
   height: 100px;
   justify-content: center;
+  position: absolute;
   width: 100px;
 
   img {

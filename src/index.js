@@ -6,12 +6,12 @@ import * as serviceWorker from "./serviceWorker";
 import * as firebase from "firebase";
 
 const config = {
-  apiKey: "AIzaSyDLAwO7OiCcMIBBQ6Vs17AS1b2UKRNxQaI",
-  authDomain: "login-86428.firebaseapp.com",
-  databaseURL: "https://login-86428.firebaseio.com",
-  projectId: "login-86428",
-  storageBucket: "login-86428.appspot.com",
-  messagingSenderId: "447345857855"
+  apiKey: "AIzaSyBaOhFLaSTLobmheKSxpufF7o5e0iX5G2U",
+  authDomain: "alcance-clientes.firebaseapp.com",
+  databaseURL: "https://alcance-clientes.firebaseio.com",
+  projectId: "alcance-clientes",
+  storageBucket: "alcance-clientes.appspot.com",
+  messagingSenderId: "311561965386"
 };
 firebase.initializeApp(config);
 

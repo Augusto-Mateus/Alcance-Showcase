@@ -1,9 +1,8 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 
-import Iframe from "../atoms/iframe";
+import Iframe from "../atoms/mapsApi";
 import AgeRange from "../particles/ageRange";
-import NextSectionButton from "../particles/nextSectionButton";
 
 const webKit = "-webkit-";
 
@@ -11,11 +10,14 @@ const Main = styled.div`
   align-items: center;
   display: flex;
   flex-direction: column;
-  margin: 75px 0 0 0;
+  height: 760px;
+  justify-content: center;
+  margin: 0 0 0 0;
   padding: 0;
 `;
 
 const SubDiv = styled.div`
+  align-items: center;
   display: flex;
   justify-content: space-between;
   margin: 0 0 85px 0;
@@ -44,7 +46,6 @@ class PublicoAlvo extends Component {
           </div>
           <Iframe title="Maps">Iframe GoogleMaps</Iframe>
         </SubDiv>
-        <NextSectionButton />
       </Main>
     );
   }

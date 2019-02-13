@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import styled from "styled-components";
 
 import Calendar from "../../static/calendario.png";
-import NextSectionButton from "../particles/nextSectionButton";
 
 const Main = styled.div`
   align-items: center;
@@ -10,7 +9,8 @@ const Main = styled.div`
   display: flex;
   flex-direction: column;
   font-size: 25px;
-  margin-top: 100px;
+  height: 795px;
+  justify-content: center;
   div {
     hr {
       border: solid 1px #626262;
@@ -23,9 +23,6 @@ const Main = styled.div`
   }
   h4 {
     margin: 0px;
-  }
-  span {
-    height: 158px;
   }
 `;
 
@@ -87,19 +84,17 @@ class DuracaoDeCampanha extends Component {
           <SubDivB>
             <div>
               <p>Data de Inicio:</p>
-              <input type="date" value="2019-02-12" />
+              <input type="date" defaultValue="2019-02-12" />
             </div>
             <hr />
             <div>
               <p>Data de Encerramento:</p>
-              <input type="date" value="2019-02-12" />
+              <input type="date" defaultValue="2019-02-12" />
             </div>
           </SubDivB>
         </SubDiv>
         <p>Tempo de duração da campanha</p>
         <h4>Valor em dias de duração</h4>
-        <span />
-        <NextSectionButton />
       </Main>
     );
   }

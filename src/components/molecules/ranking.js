@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 
-import NextSectionButton from "../particles/nextSectionButton";
+import Rank from "../atoms/rank";
 
 const Main = styled.div`
   align-items: center;
   display: flex;
   flex-direction: column;
+  height: 725px;
   justify-content: center;
 `;
 
@@ -16,7 +17,7 @@ const SubDiv = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  padding: 80px 0 80px 0;
+  padding: 0px 0 0px 0;
 `;
 
 const SubDivA = styled.div`
@@ -52,22 +53,6 @@ const Input = styled.input`
   }
 `;
 
-const SubDivB = styled.div`
-  background-color: #f4d8dc;
-  background-image: linear-gradient(
-    to top,
-    rgba(300, 300, 300, 0.6),
-    rgba(0, 0, 0, 0),
-    rgba(0, 0, 0, 0),
-    rgba(0, 0, 0, 0),
-    rgba(0, 0, 0, 0),
-    rgba(0, 0, 0, 0)
-  );
-  border-radius: 50px;
-  height: 500px;
-  width: 500px;
-`;
-
 class Ranking extends Component {
   render() {
     return (
@@ -77,15 +62,14 @@ class Ranking extends Component {
             <p>
               Lorem <br /> impsum dolor <br /> sit amet.
             </p>
-            <Input placeholder="R$2.000,00" type="number" step="0.01" />
+            <Input placeholder="R$2.000,00" type="number" />
             <p>
               Voce pode digitar valores diferentes <br /> para ver outras opções
               de anuncio.
             </p>
           </SubDivA>
-          <SubDivB />
+          <Rank />
         </SubDiv>
-        <NextSectionButton />
       </Main>
     );
   }

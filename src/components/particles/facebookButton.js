@@ -10,16 +10,16 @@ const StyledButton = styled.button`
   border-radius: 100px;
   color: #fff;
   display: flex;
+  font-size: 17px;
   font-weight: bold;
-  height: 45px;
-  justify-content: space-around;
+  height: 47px;
+  justify-content: space-evenly;
   margin: 0;
   padding: 0;
   width: 80%;
 
   img {
-    height: 20px;
-    width: 20px;
+    height: 27px;
   }
 `;
 

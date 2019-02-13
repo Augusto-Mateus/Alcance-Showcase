@@ -26,17 +26,22 @@ const StyledRange = styled.div`
   padding: 0;
   width: 150px;
 
-  div {
+  input {
     align-items: center;
     background-color: #eaeaea;
+    border: none;
     border-radius: 100px;
+    color: #fa7778;
     display: flex;
-    height: 144px;
+    font-size: 75px;
+    height: 140px;
     justify-content: center;
     margin: 0;
-    width: 144px;
+    text-align: center;
+    text-indent: 15px;
+    width: 140px;
 
-    p {
+    input:placeholder {
       color: #fa7778;
       font-size: 75px;
     }
@@ -46,24 +51,17 @@ const StyledRange = styled.div`
 class AgeRange extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      minAge: 17,
-      maxAge: 25
-    };
+    this.state = {};
   }
   render() {
     return (
       <StyledAgeRange>
         <StyledRange>
-          <div>
-            <p>{this.state.minAge}</p>
-          </div>
+          <input type="number" min="1" max="99" defaultValue="17" />
         </StyledRange>
         <hr />
         <StyledRange>
-          <div>
-            <p>{this.state.maxAge}</p>
-          </div>
+          <input type="number" min="1" max="99" defaultValue="25" />
         </StyledRange>
       </StyledAgeRange>
     );

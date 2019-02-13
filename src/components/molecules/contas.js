@@ -9,13 +9,13 @@ const Main = styled.div`
   align-items: center;
   display: flex;
   flex-direction: column;
+  height: 650px;
   justify-content: center;
+  padding-top: 50px;
   p {
     color: #fff;
     font-size: 30px;
     font-weight: bold;
-    margin-bottom: 50px;
-    margin-top: 30px;
   }
 `;
 
@@ -33,7 +33,7 @@ class Contas extends Component {
         <p>Sample</p>
         <Accounts>
           {accounts.map(account => {
-            return <Account social={account} />;
+            return <Account social={account} key={account} />;
           })}
         </Accounts>
       </Main>

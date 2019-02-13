@@ -5,8 +5,7 @@ const Main = styled.div`
   background-color: #f7f7fa;
   border-radius: 60px;
   height: 450px;
-  margin-bottom: 200px;
-  width: 30%;
+  width: 31%;
 `;
 
 const Social = styled.div`

@@ -9,18 +9,15 @@ const Main = styled.div`
   display: flex;
   color: #fff;
   flex-direction: row;
-  margin-top: 122px;
-
-  p {
-    margin-top: 20px;
-  }
+  justify-content: space-evenly;
+  margin: 50px 0 0 0;
+  width: 100%;
 `;
 
 const SubDiv = styled.div`
   align-items: center;
   display: flex;
   flex-direction: column;
-  justify-content: center;
 `;
 
 const SubDiv1 = styled.div`
@@ -34,7 +31,6 @@ const SubDiv1 = styled.div`
   flex-direction: column;
   height: 180px;
   justify-content: center;
-  margin: 20px 20px 7px 20px;
   width: 180px;
   p:first-child {
     font-size: 40px;

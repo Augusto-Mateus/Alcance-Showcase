@@ -3,14 +3,14 @@ import styled from "styled-components";
 
 import Cartao from "../../static/cartão.png";
 import Paypal from "../../static/Paypal.png";
-import NextSectionButton from "../particles/nextSectionButton";
 
 const Main = styled.div`
   align-items: center;
   display: flex;
   flex-direction: column;
+  height: 690px;
   justify-content: center;
-  margin-top: 150px;
+  padding-top: 60px;
   width: 100%;
 `;
 
@@ -104,7 +104,6 @@ const PaypalButton = styled.button`
   border: none;
   border-radius: 100px;
   height: 0px;
-  margin-bottom: 120px;
   margin-left: 30vw;
   margin-top: 40px;
   width: 0px;
@@ -143,7 +142,6 @@ class Pagamento extends Component {
         <PaypalButton>
           <img src={Paypal} alt="Paypal" />
         </PaypalButton>
-        <NextSectionButton />
       </Main>
     );
   }

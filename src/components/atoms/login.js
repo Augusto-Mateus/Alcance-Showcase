@@ -5,6 +5,7 @@ import * as firebase from "firebase";
 import Button from "../particles/button";
 import FacebookButton from "../particles/facebookButton";
 import Input from "../particles/input";
+import Context from "../../context";
 
 const Main = styled.div`
   align-items: center;
@@ -12,9 +13,9 @@ const Main = styled.div`
   border-radius: 50px;
   display: flex;
   flex-direction: column;
-  height: 380px;
+  height: 400px;
   justify-content: center;
-  width: 320px;
+  width: 360px;
 
   p {
     margin: 5px;
@@ -37,6 +38,8 @@ const Main = styled.div`
 class Login extends Component {
   constructor(props) {
     super(props);
+    this.toggle = () =>
+      this.context.setContext(prevContext => ({ logged: !prevContext.logged }));
     this.handleEmail = event => {
       const { value } = event.target;
       this.setState({ email: value });
@@ -51,7 +54,13 @@ class Login extends Component {
         this.state.email,
         this.state.password
       );
-      verification.catch(e => alert(e.message));
+      verification.catch(e => alert(e.message)) === true
+        ? verification.catch(e => alert(e.message))
+        : this.toggle();
+    };
+    this.logout = () => {
+      firebase.auth().signOut();
+      this.toggle();
     };
 
     this.state = {
@@ -63,7 +72,8 @@ class Login extends Component {
   componentDidMount() {
     firebase.auth().onAuthStateChanged(firebaseUser => {
       if (firebaseUser) {
-        console.log(firebaseUser.email + " esta logado!");
+        // alert(firebaseUser.email + " esta logado!");
+        // window.scrollTo(0, 830);
       } else {
         console.log("Error");
       }
@@ -71,23 +81,38 @@ class Login extends Component {
   }
 
   render() {
+    const { logged } = this.context;
     return (
       <Main>
-        <FacebookButton name="Login with Facebook" />
-        <p>ou</p>
-        <Input type="email" event={this.handleEmail} placeholder="E-mail" />
-        <Input
-          type="password"
-          event={this.handlePassword}
-          placeholder="Senha"
-        />
-        <Button name="ENTRAR" event={this.login} />
-        <hr />
-        <a href="sample">Não possui conta?</a>
-        <Button name="CADASTRAR-SE" />
+        {logged ? (
+          <>
+            <FacebookButton name="Login with Facebook" />
+            <p>ou</p>
+            <Input type="email" event={this.handleEmail} placeholder="E-mail" />
+            <Input
+              type="password"
+              event={this.handlePassword}
+              placeholder="Senha"
+            />
+            <Button name="ENTRAR" event={this.login} />
+            <hr />
+            <a href="sample">Não possui conta?</a>
+            <Button name="CADASTRAR-SE" />
+          </>
+        ) : (
+          <>
+            <p>
+              Bem Vindo <br />
+              {this.state.email}
+            </p>
+            <Button event={this.logout} name="Logout" />
+          </>
+        )}
       </Main>
     );
   }
 }
+
+Login.contextType = Context;
 
 export default Login;

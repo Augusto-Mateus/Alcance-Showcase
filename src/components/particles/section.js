@@ -6,15 +6,18 @@ const StyledSection = styled.a`
   color: #fff;
   font-size: 16px;
   font-weight: bold;
-  padding: 5px 15px 5px 15px;
+  padding: 5px 0px 5px 0px;
   text-decoration-line: none;
+  transition: 0.5s ease;
 
   :focus {
     background-image: linear-gradient(to right, #00dfc5, #00dfc5, #069dc8);
+    padding: 5px 15px 5px 15px;
   }
 
   :hover {
     background-image: linear-gradient(to right, #00dfc5, #00dfc5, #069dc8);
+    padding: 5px 15px 5px 15px;
   }
 `;
 

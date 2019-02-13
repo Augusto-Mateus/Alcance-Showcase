@@ -3,8 +3,8 @@ import styled from "styled-components";
 
 const StyledMaps = styled.div`
   border-radius: 25px;
-  height: 220px;
-  width: 380px;
+  height: 320px;
+  width: 400px;
 `;
 
 class Maps extends Component {

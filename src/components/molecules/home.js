@@ -7,19 +7,20 @@ import Login from "../atoms/login";
 const Main = styled.div`
   display: flex;
   flex-direction: row;
+  height: 580px;
   justify-content: space-between;
-  margin-bottom: 275px;
-  h1 {
-    font-size: 50px;
-  }
 `;
 
 const SubDiv = styled.div`
   color: #fff;
   img {
-    height: 60px;
+    height: 55px;
     margin-top: -40px;
-    width: 68px;
+    width: 60px;
+  }
+  h1 {
+    margin-top: 0px;
+    font-size: 52px;
   }
 `;
 

@@ -16,7 +16,7 @@ const sections = [
 const StyledMenu = styled.div`
   display: flex;
   justify-content: space-between;
-  margin-bottom: 100px;
+  margin-bottom: 130px;
   padding: 0;
   width: 100%;
 `;
