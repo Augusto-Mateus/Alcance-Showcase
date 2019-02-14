@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 
+import Facebook from "../../static/facebook.png";
 import Account from "../atoms/account";
 
 const accounts = ["FaceBook", "Instagram", "Youtube"];
@@ -33,7 +34,7 @@ class Contas extends Component {
         <p>Sample</p>
         <Accounts>
           {accounts.map(account => {
-            return <Account social={account} key={account} />;
+            return <Account social={account} key={account} img={Facebook} />;
           })}
         </Accounts>
       </Main>

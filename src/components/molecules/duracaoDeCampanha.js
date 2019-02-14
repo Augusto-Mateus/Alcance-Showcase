@@ -73,6 +73,48 @@ const SubDivB = styled.div`
 `;
 
 class DuracaoDeCampanha extends Component {
+  constructor(props) {
+    super(props);
+    //Default date input
+    this.newDate = new Date();
+    this.year = this.newDate.getFullYear();
+    this.valueMonth = this.newDate.getMonth() + 1;
+    this.month =
+      this.valueMonth.toString().length === 1
+        ? "0" + this.valueMonth.toString()
+        : this.valueMonth.toString();
+    this.day = this.newDate.getDate();
+    //Input prompt values
+    this.prompt = () => {
+      // Day prompt
+      const initialDay = this.state.initialDate.slice(8, 10).valueOf();
+      const finalDay = this.state.finalDate.slice(8, 10).valueOf();
+      this.setState({ promptDay: initialDay - finalDay });
+
+      // Month prompt
+      const initialMonth = this.state.initialMonth.slice(8, 10).valueOf();
+      const finalMonth = this.state.finalMonth.slice(8, 10).valueOf();
+      this.setState({ promptMonth: initialMonth - finalMonth });
+    };
+
+    this.setInitialDate = event => {
+      const { value } = event.target;
+      this.setState({ initialDate: value });
+      this.prompt();
+    };
+    this.setFinalDate = event => {
+      const { value } = event.target;
+      this.setState({ finalDate: value });
+      this.prompt();
+    };
+    //States
+    this.state = {
+      initialDate: "",
+      finalDate: "",
+      promptDay: "",
+      promptMonth: ""
+    };
+  }
   render() {
     return (
       <Main>
@@ -84,17 +126,27 @@ class DuracaoDeCampanha extends Component {
           <SubDivB>
             <div>
               <p>Data de Inicio:</p>
-              <input type="date" defaultValue="2019-02-12" />
+              <input
+                type="date"
+                defaultValue={this.year + "-" + this.month + "-" + this.day}
+                onChange={this.setInitialDate}
+              />
             </div>
             <hr />
             <div>
               <p>Data de Encerramento:</p>
-              <input type="date" defaultValue="2019-02-12" />
+              <input
+                type="date"
+                defaultValue={this.year + "-" + this.month + "-" + this.day}
+                onChange={this.setFinalDate}
+              />
             </div>
           </SubDivB>
         </SubDiv>
         <p>Tempo de duração da campanha</p>
-        <h4>Valor em dias de duração</h4>
+        <h4>
+          {this.state.promptMonth} Meses e {this.state.promptDay} Dias
+        </h4>
       </Main>
     );
   }

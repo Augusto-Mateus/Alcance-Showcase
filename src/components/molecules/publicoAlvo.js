@@ -20,7 +20,7 @@ const SubDiv = styled.div`
   align-items: center;
   display: flex;
   justify-content: space-between;
-  margin: 0 0 85px 0;
+  margin: 0 0 0 0;
   width: 100%;
 `;
 

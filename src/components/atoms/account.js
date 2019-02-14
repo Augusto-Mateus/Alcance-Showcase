@@ -18,13 +18,6 @@ const Social = styled.div`
   top: 0;
   height: 100px;
   width: 100%;
-  img {
-    border: solid #626262 1px;
-    border-radius: 100%;
-    height: 70px;
-    margin: 0 20px 0 20px;
-    width: 70px;
-  }
   div {
     p {
       color: #626262;
@@ -38,12 +31,28 @@ const Social = styled.div`
   }
 `;
 
+const Logo = styled.div`
+  align-items: center;
+  border: solid #626262 1px;
+  border-radius: 100%;
+  display: flex;
+  height: 70px;
+  justify-content: center;
+  margin: 0 20px 0 20px;
+  width: 70px;
+  img {
+    height: 40px;
+  }
+`;
+
 class Account extends Component {
   render() {
     return (
       <Main>
         <Social>
-          <img alt="" />
+          <Logo>
+            <img alt="" src={this.props.img} />
+          </Logo>
           <div>
             <p>{this.props.social}</p>
             <p>Sample</p>

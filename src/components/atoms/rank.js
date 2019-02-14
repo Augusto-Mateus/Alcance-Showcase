@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 import Ranked from "../particles/ranked";
 
-const rankeds = ["1", "2", "3", "4", "5"];
+const rankeds = [0, 1, 2, 1];
 
 const Main = styled.div`
   background-color: #f4d8dc;
@@ -28,7 +28,7 @@ class Rank extends Component {
     return (
       <Main>
         {rankeds.map(ranked => {
-          return <Ranked key={ranked} />;
+          return <Ranked key={ranked} img={ranked} />;
         })}
       </Main>
     );

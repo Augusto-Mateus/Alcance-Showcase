@@ -1,6 +1,12 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 
+import facebook from "../../static/facebook.png";
+import instagram from "../../static/instagram.png";
+import spotify from "../../static/spotify.png";
+
+const imgs = [facebook, instagram, spotify];
+
 const porcentagem = 80;
 
 const Main = styled.div`
@@ -13,13 +19,6 @@ const Main = styled.div`
   justify-content: flex-start;
   margin-bottom: 15px;
   width: 100%;
-  img {
-    border: solid #000 1px;
-    border-radius: 100%;
-    height: 50px;
-    margin: 0px 24px 0px 24px;
-    width: 50px;
-  }
   div {
     div {
       display: flex;
@@ -27,6 +26,20 @@ const Main = styled.div`
   }
   p {
     margin: 2px;
+  }
+`;
+
+const Img = styled.div`
+  align-items: center;
+  border: solid #626262 1px;
+  border-radius: 100%;
+  display: flex;
+  height: 70px;
+  justify-content: center;
+  margin: 0px 24px 0px 24px;
+  width: 70px;
+  img {
+    height: 40px;
   }
 `;
 
@@ -67,7 +80,9 @@ class Ranked extends Component {
   render() {
     return (
       <Main>
-        <img alt="Logo" />
+        <Img>
+          <img alt="Logo" src={imgs[this.props.img]} />
+        </Img>
         <div>
           <SmallTxt>Marca</SmallTxt>
           <p>Info</p>

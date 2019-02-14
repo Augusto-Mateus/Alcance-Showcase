@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 
-import Facebook from "../../static/facebook.png";
+import Facebook from "../../static/facebook-white.png";
 
 const StyledButton = styled.button`
   align-items: center;
