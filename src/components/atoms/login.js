@@ -40,6 +40,7 @@ class Login extends Component {
     super(props);
     this.toggle = () =>
       this.context.setContext(prevContext => ({ logged: !prevContext.logged }));
+
     this.handleEmail = event => {
       const { value } = event.target;
       this.setState({ email: value });

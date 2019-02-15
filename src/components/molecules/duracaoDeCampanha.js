@@ -81,41 +81,36 @@ class DuracaoDeCampanha extends Component {
     this.valueMonth = this.newDate.getMonth() + 1;
     this.month =
       this.valueMonth.toString().length === 1
-        ? "0" + this.valueMonth.toString()
-        : this.valueMonth.toString();
+        ? "0" + this.valueMonth
+        : this.valueMonth;
     this.day = this.newDate.getDate();
+    this.defaultDate = this.year + "-" + this.month + "-" + this.day;
     //Input prompt values
-    this.prompt = () => {
-      // Day prompt
-      const initialDay = this.state.initialDate.slice(8, 10).valueOf();
-      const finalDay = this.state.finalDate.slice(8, 10).valueOf();
-      this.setState({ promptDay: initialDay - finalDay });
-
-      // Month prompt
-      const initialMonth = this.state.initialMonth.slice(8, 10).valueOf();
-      const finalMonth = this.state.finalMonth.slice(8, 10).valueOf();
-      this.setState({ promptMonth: initialMonth - finalMonth });
-    };
-
-    this.setInitialDate = event => {
+    this.initialDate = event => {
       const { value } = event.target;
-      this.setState({ initialDate: value });
-      this.prompt();
+      this.setState({ initialDate: Date.parse(value) });
     };
-    this.setFinalDate = event => {
+    this.finalDate = event => {
       const { value } = event.target;
-      this.setState({ finalDate: value });
-      this.prompt();
+      this.setState({ finalDate: Date.parse(value) });
     };
     //States
     this.state = {
-      initialDate: "",
-      finalDate: "",
-      promptDay: "",
-      promptMonth: ""
+      initialDate: Date.parse(this.defaultDate),
+      finalDate: Date.parse(this.defaultDate)
     };
   }
+
   render() {
+    const promptMonth = Math.floor(
+      (this.state.finalDate - this.state.initialDate) / 86400000 / 30
+    );
+    const promptDay =
+      (this.state.finalDate - this.state.initialDate) / 86400000 >= 30
+        ? (this.state.finalDate - this.state.initialDate) / 86400000 -
+          30 * promptMonth -
+          Math.ceil((2 * promptMonth) / 4)
+        : (this.state.finalDate - this.state.initialDate) / 86400000;
     return (
       <Main>
         <p>Escolha duração de campanha</p>
@@ -128,8 +123,8 @@ class DuracaoDeCampanha extends Component {
               <p>Data de Inicio:</p>
               <input
                 type="date"
-                defaultValue={this.year + "-" + this.month + "-" + this.day}
-                onChange={this.setInitialDate}
+                defaultValue={this.defaultDate}
+                onChange={this.initialDate}
               />
             </div>
             <hr />
@@ -137,15 +132,20 @@ class DuracaoDeCampanha extends Component {
               <p>Data de Encerramento:</p>
               <input
                 type="date"
-                defaultValue={this.year + "-" + this.month + "-" + this.day}
-                onChange={this.setFinalDate}
+                defaultValue={this.defaultDate}
+                onChange={this.finalDate}
               />
             </div>
           </SubDivB>
         </SubDiv>
         <p>Tempo de duração da campanha</p>
         <h4>
-          {this.state.promptMonth} Meses e {this.state.promptDay} Dias
+          {promptMonth < 1 || isNaN(promptDay) === true
+            ? null
+            : promptMonth + " Meses e "}
+          {promptDay < 0 || isNaN(promptDay) === true
+            ? "Este não é um prazo valido"
+            : promptDay + " Dias"}
         </h4>
       </Main>
     );

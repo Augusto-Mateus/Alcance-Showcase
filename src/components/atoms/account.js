@@ -1,6 +1,12 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 
+import Facebook from "../../static/facebook.png";
+import Instagram from "../../static/instagram.png";
+import Spotify from "../../static/spotify.png";
+
+const icons = [Facebook, Instagram, Spotify];
+
 const Main = styled.div`
   background-color: #f7f7fa;
   border-radius: 60px;
@@ -51,7 +57,7 @@ class Account extends Component {
       <Main>
         <Social>
           <Logo>
-            <img alt="" src={this.props.img} />
+            <img alt="Icon" src={icons[this.props.img]} />
           </Logo>
           <div>
             <p>{this.props.social}</p>
