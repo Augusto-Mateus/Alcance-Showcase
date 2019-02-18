@@ -13,7 +13,7 @@ class ToggleSection extends Component {
     const { logged } = this.context;
     return (
       <>
-        {logged ? null : (
+        {!logged ? null : (
           <>
             <Segmentacao />
             <PublicoAlvo />

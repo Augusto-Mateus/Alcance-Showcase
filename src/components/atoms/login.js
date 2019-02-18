@@ -55,9 +55,9 @@ class Login extends Component {
         this.state.email,
         this.state.password
       );
-      verification.catch() === true
-        ? verification.catch(e => alert(e.message))
-        : this.toggle();
+      verification.catch(e => {
+        alert(e);
+      });
     };
     this.logout = () => {
       firebase.auth().signOut();
@@ -74,6 +74,8 @@ class Login extends Component {
     firebase.auth().onAuthStateChanged(firebaseUser => {
       if (firebaseUser) {
         alert(firebaseUser.email + " esta logado!");
+        this.setState({ email: firebaseUser.email });
+        this.toggle();
         window.scrollTo(0, 830);
       } else {
         console.log("Error");
@@ -85,7 +87,7 @@ class Login extends Component {
     const { logged } = this.context;
     return (
       <Main>
-        {logged ? (
+        {!logged ? (
           <>
             <FacebookButton name="Login with Facebook" />
             <p>ou</p>
