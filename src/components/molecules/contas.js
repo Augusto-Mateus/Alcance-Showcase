@@ -2,16 +2,21 @@ import React, { Component } from "react";
 import styled from "styled-components";
 
 import Account from "../atoms/account";
+import Background from "../../static/CONTAS.png";
 
 const accounts = ["FaceBook", "Instagram", "Youtube"];
 
 const Main = styled.div`
   align-items: center;
+  background-image: url(${Background});
+  background-repeat: no-repeat;
+  background-size: cover;
   display: flex;
   flex-direction: column;
   height: 650px;
   justify-content: center;
-  padding-top: 50px;
+  margin-top: -70px;
+  padding: 100px 170px 0px 170px;
   p {
     color: #fff;
     font-size: 30px;
@@ -19,7 +24,7 @@ const Main = styled.div`
   }
 `;
 
-const Accounts = styled.div`
+const Div = styled.div`
   align-items: center;
   display: flex;
   justify-content: space-between;
@@ -31,7 +36,7 @@ class Contas extends Component {
     return (
       <Main>
         <p>Sample</p>
-        <Accounts>
+        <Div>
           {accounts.map(account => {
             return (
               <Account
@@ -41,7 +46,7 @@ class Contas extends Component {
               />
             );
           })}
-        </Accounts>
+        </Div>
       </Main>
     );
   }

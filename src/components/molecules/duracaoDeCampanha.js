@@ -1,16 +1,21 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 
+import Background from "../../static/DuraçãoDeCampanha.png";
 import Calendar from "../../static/calendario.png";
 
 const Main = styled.div`
   align-items: center;
+  background-image: url(${Background});
+  background-repeat: no-repeat;
+  background-size: cover;
   color: #fff;
   display: flex;
   flex-direction: column;
   font-size: 25px;
   height: 795px;
   justify-content: center;
+  padding: 0px 170px 0px 170px;
   div {
     hr {
       border: solid 1px #626262;
@@ -26,7 +31,7 @@ const Main = styled.div`
   }
 `;
 
-const SubDiv = styled.div`
+const Div = styled.div`
   align-items: center;
   background-color: #fff;
   border-radius: 50px;
@@ -114,7 +119,7 @@ class DuracaoDeCampanha extends Component {
     return (
       <Main>
         <p>Escolha duração de campanha</p>
-        <SubDiv>
+        <Div>
           <SubDivA>
             <img src={Calendar} alt="Calendar" />
           </SubDivA>
@@ -137,7 +142,7 @@ class DuracaoDeCampanha extends Component {
               />
             </div>
           </SubDivB>
-        </SubDiv>
+        </Div>
         <p>Tempo de duração da campanha</p>
         <h4>
           {promptMonth < 1 || isNaN(promptDay) === true

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 
-const StyledMaps = styled.div`
+const Main = styled.div`
   border-radius: 25px;
   height: 320px;
   width: 400px;
@@ -52,7 +52,7 @@ class Maps extends Component {
     // };
   };
   render() {
-    return <StyledMaps title="Google Maps" id="map" />;
+    return <Main title="Google Maps" id="map" />;
   }
 }
 

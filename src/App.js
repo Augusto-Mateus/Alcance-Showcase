@@ -1,9 +1,8 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 
-import LandingPageBackground from "./static/LandingPageBackground.png";
+import Background from "./static/LandingPageBackground.png";
 import Menu from "./components/atoms/menu";
-import Sections from "./static/Sections.png";
 import Home from "./components/molecules/home";
 import ToggleSections from "./components/molecules/toggleSections";
 import Context from "./context";
@@ -14,18 +13,14 @@ const Main = styled.div`
 `;
 
 const LandingPageHome = styled.div`
-  background-image: url(${LandingPageBackground});
+  background-image: url(${Background});
   background-repeat: no-repeat;
   background-size: cover;
   padding: 80px 170px 0px 170px;
 `;
 
 const LandingPageSections = styled.div`
-  background-image: url(${Sections});
-  background-repeat: no-repeat;
-  background-size: cover;
   margin-top: -100px;
-  padding: 140px 170px 0px 170px;
 `;
 
 class App extends Component {

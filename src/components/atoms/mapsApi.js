@@ -5,7 +5,7 @@ import Maps from "../particles/maps";
 
 const inputs = ["Localização", "Raio"];
 
-const StyledIframe = styled.div`
+const Main = styled.div`
   align-items: center;
   background: linear-gradient(to right, #fa7778, #fdb851);
   border-radius: 65px;
@@ -46,7 +46,7 @@ const StyledIframe = styled.div`
   }
 `;
 
-const Range = styled.p`
+const Txt = styled.p`
   font-weight: bold;
   margin: 0;
 `;
@@ -54,7 +54,7 @@ const Range = styled.p`
 class Iframe extends Component {
   render() {
     return (
-      <StyledIframe>
+      <Main>
         <div>
           {inputs.map(input => {
             return (
@@ -68,9 +68,9 @@ class Iframe extends Component {
         <div>
           <Maps />
           <p>Alcance diário estimado em pessoas</p>
-          <Range>2.000.000 as 3.500.000</Range>
+          <Txt>2.000.000 as 3.500.000</Txt>
         </div>
-      </StyledIframe>
+      </Main>
     );
   }
 }

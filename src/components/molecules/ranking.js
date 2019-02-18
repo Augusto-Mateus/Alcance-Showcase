@@ -4,14 +4,16 @@ import styled from "styled-components";
 import Rank from "../atoms/rank";
 
 const Main = styled.div`
+  background-color: #fd6d80;
   align-items: center;
   display: flex;
   flex-direction: column;
   height: 725px;
   justify-content: center;
+  padding: 0px 170px 0px 170px;
 `;
 
-const SubDiv = styled.div`
+const Div = styled.div`
   align-items: center;
   color: #fff;
   display: flex;
@@ -20,7 +22,7 @@ const SubDiv = styled.div`
   padding: 0px 0 0px 0;
 `;
 
-const SubDivA = styled.div`
+const SubDiv = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -57,8 +59,8 @@ class Ranking extends Component {
   render() {
     return (
       <Main>
-        <SubDiv>
-          <SubDivA>
+        <Div>
+          <SubDiv>
             <p>
               Lorem <br /> impsum dolor <br /> sit amet.
             </p>
@@ -67,9 +69,9 @@ class Ranking extends Component {
               Voce pode digitar valores diferentes <br /> para ver outras opções
               de anuncio.
             </p>
-          </SubDivA>
+          </SubDiv>
           <Rank />
-        </SubDiv>
+        </Div>
       </Main>
     );
   }

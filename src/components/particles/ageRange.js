@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 
-const StyledAgeRange = styled.div`
+const Main = styled.div`
   align-items: center;
   display: flex;
   margin-top: 50px;
@@ -16,7 +16,7 @@ const StyledAgeRange = styled.div`
   }
 `;
 
-const StyledRange = styled.div`
+const Div = styled.div`
   align-items: center;
   background: linear-gradient(to right, #fa7778, #fdb851);
   border-radius: 100px;
@@ -55,15 +55,15 @@ class AgeRange extends Component {
   }
   render() {
     return (
-      <StyledAgeRange>
-        <StyledRange>
+      <Main>
+        <Div>
           <input type="number" min="1" max="99" defaultValue="17" />
-        </StyledRange>
+        </Div>
         <hr />
-        <StyledRange>
+        <Div>
           <input type="number" min="1" max="99" defaultValue="25" />
-        </StyledRange>
-      </StyledAgeRange>
+        </Div>
+      </Main>
     );
   }
 }

@@ -13,7 +13,7 @@ const sections = [
   "CONTAS"
 ];
 
-const StyledMenu = styled.div`
+const Main = styled.div`
   display: flex;
   justify-content: space-between;
   margin-bottom: 130px;
@@ -24,11 +24,11 @@ const StyledMenu = styled.div`
 class Menu extends Component {
   render() {
     return (
-      <StyledMenu>
+      <Main>
         {sections.map(section => {
           return <Section section={section} key={section} />;
         })}
-      </StyledMenu>
+      </Main>
     );
   }
 }

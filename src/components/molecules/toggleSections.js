@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import styled from "styled-components";
 
 import Segmentacao from "./segmentacao";
 import PublicoAlvo from "./publicoAlvo";
@@ -7,6 +8,11 @@ import Duracao from "./duracaoDeCampanha";
 import Pagamento from "./pagamento";
 import Contas from "./contas";
 import Context from "../../context";
+
+const SubDiv = styled.div`
+  display: flex;
+  flex-direction: column-reverse;
+`;
 
 class ToggleSection extends Component {
   render() {
@@ -19,8 +25,10 @@ class ToggleSection extends Component {
             <PublicoAlvo />
             <Ranking />
             <Duracao />
-            <Pagamento />
-            <Contas />
+            <SubDiv>
+              <Contas />
+              <Pagamento />
+            </SubDiv>
           </>
         )}
       </>

@@ -14,13 +14,13 @@ const Main = styled.div`
   width: 100%;
 `;
 
-const SubDiv = styled.div`
+const Div = styled.div`
   align-items: center;
   display: flex;
   flex-direction: column;
 `;
 
-const SubDiv1 = styled.div`
+const SubDiv = styled.div`
   align-items: center;
   background: url(${Ellipse});
   background-color: rgba(100, 100, 100, 0.3);
@@ -48,13 +48,13 @@ class CircularGraph extends Component {
       <Main>
         {loads.map(load => {
           return (
-            <SubDiv key={load}>
-              <SubDiv1>
+            <Div key={load}>
+              <SubDiv>
                 <p>100%</p>
                 <p>Completo</p>
-              </SubDiv1>
+              </SubDiv>
               <p>{load}</p>
-            </SubDiv>
+            </Div>
           );
         })}
       </Main>

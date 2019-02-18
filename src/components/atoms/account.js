@@ -14,7 +14,7 @@ const Main = styled.div`
   width: 31%;
 `;
 
-const Social = styled.div`
+const Div = styled.div`
   align-items: center;
   background-color: #fff;
   border-radius: 100px;
@@ -37,7 +37,7 @@ const Social = styled.div`
   }
 `;
 
-const Logo = styled.div`
+const SubDiv = styled.div`
   align-items: center;
   border: solid #626262 1px;
   border-radius: 100%;
@@ -55,15 +55,15 @@ class Account extends Component {
   render() {
     return (
       <Main>
-        <Social>
-          <Logo>
+        <Div>
+          <SubDiv>
             <img alt="Icon" src={icons[this.props.img]} />
-          </Logo>
+          </SubDiv>
           <div>
             <p>{this.props.social}</p>
             <p>Sample</p>
           </div>
-        </Social>
+        </Div>
       </Main>
     );
   }

@@ -1,20 +1,24 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 
+import Background from "../../static/PAGAMENTO.png";
 import Cartao from "../../static/cartão.png";
 import Paypal from "../../static/Paypal.png";
 
 const Main = styled.div`
   align-items: center;
+  background-image: url(${Background});
+  background-position: 50% 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
   display: flex;
   flex-direction: column;
-  height: 690px;
+  height: 750px;
   justify-content: center;
-  padding-top: 60px;
-  width: 100%;
+  padding: 0px 170px 0px 170px;
 `;
 
-const SubDiv = styled.div`
+const Div = styled.div`
   align-items: center;
   display: flex;
   flex-direction: row;
@@ -22,7 +26,7 @@ const SubDiv = styled.div`
   width: 100%;
 `;
 
-const SubDivImage = styled.div`
+const SubDivA = styled.div`
   align-items: center;
   background-color: #0000c1;
   border-top-left-radius: 40px;
@@ -43,7 +47,7 @@ const SubDivImage = styled.div`
   }
 `;
 
-const SubDivInformation = styled.div`
+const SubDivB = styled.div`
   align-items: center;
   background-color: #6f43e0;
   border-radius: 35px;
@@ -100,7 +104,7 @@ const SubDivInformation = styled.div`
   }
 `;
 
-const PaypalButton = styled.button`
+const Btn = styled.button`
   border: none;
   border-radius: 100px;
   height: 0px;
@@ -118,14 +122,14 @@ class Pagamento extends Component {
   render() {
     return (
       <Main>
-        <SubDiv>
-          <SubDivImage>
+        <Div>
+          <SubDivA>
             <img src={Cartao} alt="Cartão" />
             <p>
               Informações <br /> de pagamento
             </p>
-          </SubDivImage>
-          <SubDivInformation>
+          </SubDivA>
+          <SubDivB>
             <div>
               <p>Quantidade de Anuncios</p>
               <h1>Nº de Anuncios</h1>
@@ -137,11 +141,11 @@ class Pagamento extends Component {
               <p>Total a pagar</p>
               <h1>R$ 2.000,00</h1>
             </div>
-          </SubDivInformation>
-        </SubDiv>
-        <PaypalButton>
+          </SubDivB>
+        </Div>
+        <Btn>
           <img src={Paypal} alt="Paypal" />
-        </PaypalButton>
+        </Btn>
       </Main>
     );
   }
