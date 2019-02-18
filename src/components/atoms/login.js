@@ -76,7 +76,7 @@ class Login extends Component {
         alert(firebaseUser.email + " esta logado!");
         this.setState({ email: firebaseUser.email });
         this.toggle();
-        window.scrollTo(0, 830);
+        window.scrollTo(0, 935);
       } else {
         console.log("Error");
       }

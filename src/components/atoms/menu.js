@@ -13,6 +13,8 @@ const sections = [
   "CONTAS"
 ];
 
+const scroll = ["0, 0", "0, 935"];
+
 const Main = styled.div`
   display: flex;
   justify-content: space-between;
@@ -26,7 +28,13 @@ class Menu extends Component {
     return (
       <Main>
         {sections.map(section => {
-          return <Section section={section} key={section} />;
+          return (
+            <Section
+              scroll={scroll[sections.indexOf(section)]}
+              section={section}
+              key={section}
+            />
+          );
         })}
       </Main>
     );

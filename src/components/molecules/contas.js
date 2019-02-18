@@ -15,7 +15,7 @@ const Main = styled.div`
   flex-direction: column;
   height: 650px;
   justify-content: center;
-  margin-top: -70px;
+  margin-top: -90px;
   padding: 100px 170px 0px 170px;
   p {
     color: #fff;

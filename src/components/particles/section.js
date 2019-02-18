@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 
-const StyledSection = styled.a`
+const StyledSection = styled.button`
+  background-color: rgba(0, 0, 0, 0);
+  border: none;
   border-radius: 20px;
   color: #fff;
   font-size: 16px;
@@ -22,8 +24,18 @@ const StyledSection = styled.a`
 `;
 
 class Section extends Component {
+  constructor(props) {
+    super(props);
+    this.scrollTo = () => {
+      window.scrollTo(this.props.scroll);
+    };
+  }
   render() {
-    return <StyledSection href="#">{this.props.section}</StyledSection>;
+    return (
+      <StyledSection onClick={this.scrollTo}>
+        {this.props.section}
+      </StyledSection>
+    );
   }
 }
 

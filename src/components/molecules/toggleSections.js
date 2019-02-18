@@ -1,17 +1,28 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 
-import Segmentacao from "./segmentacao";
+import Contas from "./contas";
+import Duracao from "./duracaoDeCampanha";
+import Context from "../../context";
+import NextSectionButton from "../particles/nextSectionButton";
+import Pagamento from "./pagamento";
 import PublicoAlvo from "./publicoAlvo";
 import Ranking from "./ranking";
-import Duracao from "./duracaoDeCampanha";
-import Pagamento from "./pagamento";
-import Contas from "./contas";
-import Context from "../../context";
+import Segmentacao from "./segmentacao";
+
+const Main = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+const SubDivReverse = styled.div`
+  display: flex;
+  flex-direction: column-reverse;
+`;
 
 const SubDiv = styled.div`
   display: flex;
-  flex-direction: column-reverse;
+  flex-direction: column;
 `;
 
 class ToggleSection extends Component {
@@ -20,16 +31,29 @@ class ToggleSection extends Component {
     return (
       <>
         {!logged ? null : (
-          <>
+          <Main>
             <Segmentacao />
-            <PublicoAlvo />
-            <Ranking />
-            <Duracao />
-            <SubDiv>
+            <SubDivReverse>
+              <PublicoAlvo />
+              <NextSectionButton scroll="935, 1600" />
+            </SubDivReverse>
+            <SubDivReverse>
+              <Ranking />
+              <NextSectionButton />
+            </SubDivReverse>
+            <SubDivReverse>
+              <Duracao />
+              <NextSectionButton />
+            </SubDivReverse>
+            <SubDivReverse>
               <Contas />
-              <Pagamento />
-            </SubDiv>
-          </>
+              <SubDiv>
+                <Pagamento />
+                <NextSectionButton />
+              </SubDiv>
+              <NextSectionButton />
+            </SubDivReverse>
+          </Main>
         )}
       </>
     );

@@ -3,8 +3,9 @@ import styled from "styled-components";
 
 import Arrow from "../../static/Arrow.png";
 
-const StyledNextSectionButton = styled.button`
+const Btn = styled.button`
   align-items: flex-end;
+  align-self: center;
   background-color: rgba(100, 100, 100, 0.3);
   border: solid #fff 3px;
   border-radius: 100px;
@@ -13,7 +14,7 @@ const StyledNextSectionButton = styled.button`
   font-size: 40px;
   height: 100px;
   justify-content: center;
-  position: absolute;
+  margin: -50px 0 -50px 0;
   width: 100px;
 
   img {
@@ -23,11 +24,17 @@ const StyledNextSectionButton = styled.button`
 `;
 
 class NextSectionButton extends Component {
+  constructor(props) {
+    super(props);
+    this.scroll = () => {
+      window.scrollTo(this.props.scroll);
+    };
+  }
   render() {
     return (
-      <StyledNextSectionButton href="#">
+      <Btn onClick={this.scroll}>
         <img alt="arrow" src={Arrow} />
-      </StyledNextSectionButton>
+      </Btn>
     );
   }
 }
