@@ -55,7 +55,7 @@ class Login extends Component {
         this.state.email,
         this.state.password
       );
-      verification.catch(e => alert(e.message)) === true
+      verification.catch() === true
         ? verification.catch(e => alert(e.message))
         : this.toggle();
     };
@@ -73,8 +73,8 @@ class Login extends Component {
   componentDidMount() {
     firebase.auth().onAuthStateChanged(firebaseUser => {
       if (firebaseUser) {
-        // alert(firebaseUser.email + " esta logado!");
-        // window.scrollTo(0, 830);
+        alert(firebaseUser.email + " esta logado!");
+        window.scrollTo(0, 830);
       } else {
         console.log("Error");
       }
