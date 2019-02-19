@@ -4,7 +4,7 @@ self.__precacheManifest = [
     "url": "/Alcance-Showcase/static/media/DuraçãoDeCampanha.0e8a3fd3.png"
   },
   {
-    "revision": "286c88c940901d4427d5",
+    "revision": "897a72e8569f2fc80b5d",
     "url": "/Alcance-Showcase/static/css/main.69556776.chunk.css"
   },
   {
@@ -28,8 +28,8 @@ self.__precacheManifest = [
     "url": "/Alcance-Showcase/static/media/CONTAS.eb121920.png"
   },
   {
-    "revision": "286c88c940901d4427d5",
-    "url": "/Alcance-Showcase/static/js/main.286c88c9.chunk.js"
+    "revision": "897a72e8569f2fc80b5d",
+    "url": "/Alcance-Showcase/static/js/main.897a72e8.chunk.js"
   },
   {
     "revision": "09890bd9bf6b32883173e007211b2589",
@@ -52,7 +52,7 @@ self.__precacheManifest = [
     "url": "/Alcance-Showcase/static/media/segmentação.9de4a057.png"
   },
   {
-    "revision": "e1065d09ab330ba238abcb29975f2d7f",
+    "revision": "4eccff16dff948e05ce0982fb59df196",
     "url": "/Alcance-Showcase/index.html"
   }
 ];
