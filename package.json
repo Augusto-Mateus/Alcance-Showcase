@@ -2,7 +2,10 @@
   "name": "alcance-hotsite",
   "version": "0.1.0",
   "private": true,
+<<<<<<< HEAD
   "homepage": "https://augusto-mateus.github.io/Alcance-Showcase/",
+=======
+>>>>>>> parent of 32f8515... GithubPages
   "dependencies": {
     "bootstrap": "^4.2.1",
     "firebase": "^5.8.2",
