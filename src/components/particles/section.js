@@ -6,8 +6,9 @@ const StyledSection = styled.button`
   border: none;
   border-radius: 20px;
   color: #fff;
-  font-size: 16px;
+  font-size: 15px;
   font-weight: bold;
+  letter-spacing: 1.3px;
   padding: 5px 0px 5px 0px;
   text-decoration-line: none;
   transition: 0.5s ease;
@@ -27,7 +28,7 @@ class Section extends Component {
   constructor(props) {
     super(props);
     this.scrollTo = () => {
-      window.scrollTo(this.props.scroll);
+      window.scrollTo(0, this.props.scroll);
     };
   }
   render() {
