@@ -28,7 +28,7 @@ class Section extends Component {
   constructor(props) {
     super(props);
     this.scrollTo = () => {
-      window.scrollTo(this.props.scroll);
+      window.scrollTo(0, this.props.scroll);
     };
   }
   render() {

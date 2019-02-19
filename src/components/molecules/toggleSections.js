@@ -35,23 +35,23 @@ class ToggleSection extends Component {
             <Segmentacao />
             <SubDivReverse>
               <PublicoAlvo />
-              <NextSectionButton scroll="935, 1600" />
+              <NextSectionButton scroll={1570} />
             </SubDivReverse>
             <SubDivReverse>
               <Ranking />
-              <NextSectionButton />
+              <NextSectionButton scroll={2325} />
             </SubDivReverse>
             <SubDivReverse>
               <Duracao />
-              <NextSectionButton />
+              <NextSectionButton scroll={3050} />
             </SubDivReverse>
             <SubDivReverse>
               <Contas />
               <SubDiv>
                 <Pagamento />
-                <NextSectionButton />
+                <NextSectionButton scroll={4600} />
               </SubDiv>
-              <NextSectionButton />
+              <NextSectionButton scroll={3850} />
             </SubDivReverse>
           </Main>
         )}

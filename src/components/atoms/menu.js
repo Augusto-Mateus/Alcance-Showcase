@@ -13,7 +13,7 @@ const sections = [
   "CONTAS"
 ];
 
-const scroll = ["0, 0", "0, 935"];
+const scroll = [0, 935, 1570, 2325, 3050, 3850, 4600];
 
 const Main = styled.div`
   display: flex;

@@ -2,7 +2,7 @@
   "name": "alcance-hotsite",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://augusto-mateus.github.io/Alcance/",
+  "homepage": "https://augusto-mateus.github.io/Alcance-Showcase/",
   "dependencies": {
     "bootstrap": "^4.2.1",
     "firebase": "^5.8.2",
