@@ -27,7 +27,7 @@ class NextSectionButton extends Component {
   constructor(props) {
     super(props);
     this.scroll = () => {
-      window.scrollTo(0, this.props.scroll);
+      window.scrollTo(this.props.scroll);
     };
   }
   render() {
