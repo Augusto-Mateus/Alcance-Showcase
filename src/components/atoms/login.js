@@ -59,8 +59,6 @@ class Login extends Component {
         alert(e);
       });
     };
-    this.facebookLogin = () => {
-    };
     this.logout = () => {
       firebase.auth().signOut();
       this.toggle();
