@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 import * as firebase from "firebase";
+import FirebaseAuth from "react-firebaseui/FirebaseAuth";
 
 import Button from "../particles/button";
-import FacebookButton from "../particles/facebookButton";
 import Input from "../particles/input";
 import Context from "../../context";
 
@@ -35,11 +35,26 @@ const Main = styled.div`
   }
 `;
 
+const FacebookBtn = styled(FirebaseAuth)`
+  button {
+    border-radius: 100vw;
+    height: 35px;
+    margin: 0;
+    width: 100%;
+  }
+`;
+
 class Login extends Component {
   constructor(props) {
     super(props);
     this.toggle = () =>
       this.context.setContext(prevContext => ({ logged: !prevContext.logged }));
+
+    this.uiConfig = {
+      signInflow: "popup",
+      signInOptions: [firebase.auth.FacebookAuthProvider.PROVIDER_ID],
+      callBacks: { signInsuccess: () => false }
+    };
 
     this.handleEmail = event => {
       const { value } = event.target;
@@ -59,6 +74,7 @@ class Login extends Component {
         alert(e);
       });
     };
+
     this.logout = () => {
       firebase.auth().signOut();
       this.toggle();
@@ -73,7 +89,6 @@ class Login extends Component {
   componentDidMount() {
     firebase.auth().onAuthStateChanged(firebaseUser => {
       if (firebaseUser) {
-        alert(firebaseUser.email + " esta logado!");
         this.setState({ email: firebaseUser.email });
         this.toggle();
         window.scrollTo(0, 935);
@@ -89,7 +104,10 @@ class Login extends Component {
       <Main>
         {!logged ? (
           <>
-            <FacebookButton name="Login with Facebook" />
+            <FacebookBtn
+              uiConfig={this.uiConfig}
+              firebaseAuth={firebase.auth()}
+            />
             <p>ou</p>
             <Input type="email" event={this.handleEmail} placeholder="E-mail" />
             <Input

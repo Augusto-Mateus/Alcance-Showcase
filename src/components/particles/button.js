@@ -9,7 +9,7 @@ const StyledButton = styled.button`
   font-size: 11px;
   height: 35px;
   margin: 5px;
-  width: 50%;
+  width: 50% !important;
 `;
 
 class Button extends Component {

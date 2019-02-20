@@ -1,9 +1,12 @@
 import React, { Component } from "react";
 import styled from "styled-components";
+import Context from "../../context";
 
 import Maps from "../particles/maps";
 
-const inputs = ["Localização", "Raio"];
+const Inputs = ["Localização", "Raio"];
+const Type = ["text", "number"];
+const Placeholder = ["Sua Localização", "Km"];
 
 const Main = styled.div`
   align-items: center;
@@ -51,16 +54,26 @@ const Txt = styled.p`
   margin: 0;
 `;
 
-class Iframe extends Component {
+class MapsApi extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      Localização: "",
+      Raio: ""
+    };
+  }
   render() {
     return (
       <Main>
         <div>
-          {inputs.map(input => {
+          {Inputs.map(input => {
             return (
               <div key={input}>
                 <p>{input}</p>
-                <input placeholder={input} />
+                <input
+                  placeholder={Placeholder[Inputs.indexOf(input)]}
+                  type={Type[Inputs.indexOf(input)]}
+                />
               </div>
             );
           })}
@@ -75,4 +88,6 @@ class Iframe extends Component {
   }
 }
 
-export default Iframe;
+MapsApi.contextType = Context;
+
+export default MapsApi;

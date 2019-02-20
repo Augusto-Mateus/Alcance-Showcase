@@ -1,68 +1,47 @@
 import React, { Component } from "react";
 import styled from "styled-components";
+import { Map, Marker, GoogleApiWrapper } from "google-maps-react";
+import Context from "../../context";
 
 const Main = styled.div`
-  border-radius: 25px;
-  height: 320px;
-  width: 400px;
+  align-items: flex-start;
+  display: flex;
+  height: 300px;
+  justify-content: flex-start;
+  margin: 0;
+  padding: 0;
+  width: 345px;
 `;
 
+const style = {
+  borderRadius: "1vw",
+  height: "380px",
+  margin: "-30px 0 0 -60px",
+  position: "relative",
+  width: "445px"
+};
+
 class Maps extends Component {
-  componentDidMount() {
-    this.renderMap();
-  }
-
-  renderMap = () => {
-    loadScript(
-      "https://maps.googleapis.com/maps/api/js?key=#&callback=initMap"
-      // AIzaSyD2atUYInE6aLgfmXoJeaV11dTq2i3szAA
-    );
-    window.initMap = this.initMap;
-  };
-
-  initMap = () => {
-    new window.google.maps.Map(document.getElementById("map"), {
-      center: { lat: -23.5209642, lng: -46.7466352 },
-      zoom: 13,
-      disableDefaultUI: true
-    });
-    // //search
-    // const request = {
-    //   query: "Museum of Contemporary Art Australia",
-    //   fields: ["name", "geometry"]
-    // };
-    // //service
-    // const service = new window.google.maps.places.PlacesService(map);
-    // //search function
-    // service.findPlaceFromQuery(request, (results, status) => {
-    //   if (status === window.google.maps.places.PlacesServiceStatus.OK) {
-    //     for (var i = 0; i < results.length; i++) {
-    //       createMarker(results[i]);
-    //     }
-
-    //     map.setCenter(results[0].geometry.location);
-    //   }
-    // });
-    // //marker
-    // const createMarker = place => {
-    //   new window.google.maps.Marker({
-    //     map: map,
-    //     position: place.geometry.location
-    //   });
-    // };
-  };
   render() {
-    return <Main title="Google Maps" id="map" />;
+    return (
+      <Main>
+        <Map
+          google={this.props.google}
+          zoom={14}
+          style={style}
+          center={{
+            lat: -23.5209583,
+            lng: -46.7115207
+          }}
+        />
+        <Marker onClick={this.onMarkerClick} name={"Current location"} />
+      </Main>
+    );
   }
 }
 
-function loadScript(url) {
-  var index = window.document.getElementsByTagName("script")[0];
-  var script = window.document.createElement("script");
-  script.src = url;
-  script.async = true;
-  script.defer = true;
-  index.parentNode.insertBefore(script, index);
-}
+Maps.contextType = Context;
 
-export default Maps;
+export default GoogleApiWrapper({
+  apiKey: "AIzaSyD2atUYInE6aLgfmXoJeaV11dTq2i3szAA"
+})(Maps);

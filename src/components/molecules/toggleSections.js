@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import styled from "styled-components";
 
 import Contas from "./contas";
-import Duracao from "./duracaoDeCampanha";
 import Context from "../../context";
+import Duracao from "./duracaoDeCampanha";
 import NextSectionButton from "../particles/nextSectionButton";
 import Pagamento from "./pagamento";
 import PublicoAlvo from "./publicoAlvo";
