@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import moment from "moment";
+
 import Background from "../../static/DuraçãoDeCampanha.png";
 import Calendar from "../../static/calendario.png";
 
@@ -90,36 +90,32 @@ class DuracaoDeCampanha extends Component {
         : this.valueMonth;
     this.day = this.newDate.getDate();
     this.defaultDate = this.year + "-" + this.month + "-" + this.day;
-
     //Input prompt values
     this.initialDate = event => {
-      const { value } = event.target.replace("-", "").replace("-", "");
-      this.setState({ initialDate: value });
+      const { value } = event.target;
+      this.setState({ initialDate: Date.parse(value) });
     };
     this.finalDate = event => {
       const { value } = event.target;
-      const day = value.substring(8, 10);
-      const month = value.substring(5, 7);
-      const year = value.substring(0, 4);
-      this.setState({ finalDay: day });
-      console.log(this.state.day);
+      this.setState({ finalDate: Date.parse(value) });
     };
-
-    this.Prompt = () => {
-      const prompt = moment(this.state.initialDate, "yyyymmdd")
-        .add(this.state.finalDay, "day")
-        .calendar();
-      this.setState({ prompt: prompt });
-    };
-
-    //states
+    //States
     this.state = {
-      initialDate: this.defaultDate,
-      prompt: this.prompt
+      initialDate: Date.parse(this.defaultDate),
+      finalDate: Date.parse(this.defaultDate)
     };
   }
 
   render() {
+    const promptMonth = Math.floor(
+      (this.state.finalDate - this.state.initialDate) / 86400000 / 30
+    );
+    const promptDay =
+      (this.state.finalDate - this.state.initialDate) / 86400000 >= 30
+        ? (this.state.finalDate - this.state.initialDate) / 86400000 -
+          30 * promptMonth -
+          Math.ceil((2 * promptMonth) / 4)
+        : (this.state.finalDate - this.state.initialDate) / 86400000;
     return (
       <Main>
         <p>Escolha duração de campanha</p>
@@ -148,7 +144,14 @@ class DuracaoDeCampanha extends Component {
           </SubDivB>
         </Div>
         <p>Tempo de duração da campanha</p>
-        <h4>{this.state.day}</h4>
+        <h4>
+          {promptMonth < 1 || isNaN(promptDay) === true
+            ? null
+            : promptMonth + " Meses e "}
+          {promptDay < 0 || isNaN(promptDay) === true
+            ? "Este não é um prazo valido"
+            : promptDay + " Dias"}
+        </h4>
       </Main>
     );
   }

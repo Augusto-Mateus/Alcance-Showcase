@@ -6,47 +6,46 @@ import Ranked from "../particles/ranked";
 const rankeds = [0, 1, 2, 1];
 
 const Main = styled.div`
-  background-color: #f4d8dc;
+  background-image: linear-gradient(to bottom, #f4d8dc, white);
   border-radius: 50px;
   height: 500px;
-  padding: 13px;
-  overflow-y: hidden;
+  padding: 0px 13px 0px 13px;
+  overflow: hidden;
   width: 500px;
+  &:after {
+  }
 `;
 
-// const slider = () => {
-//   let isDown = false;
-//   let startX;
-//   let scrollLeft;
-
-//   slider.addEventListener("mousedown", e => {
-//     isDown = true;
-//     startX = e.pageX - slider.offsetLeft;
-//     scrollLeft = slider.scrollLeft;
-//   });
-//   slider.addEventListener("mouseleave", () => {
-//     isDown = false;
-//   });
-//   slider.addEventListener("mouseup", () => {
-//     isDown = false;
-//   });
-//   slider.addEventListener("mousemove", e => {
-//     if (!isDown) return;
-//     e.preventDefault();
-//     const x = e.pageX - slider.offsetLeft;
-//     const walk = (x - startX) * 3; //scroll-fast
-//     slider.scrollLeft = scrollLeft - walk;
-//     console.log(walk);
-//   });
-// };
+const Scroller = styled.div`
+  border-radius: 50px;
+  height: 100%;
+  margin-right: -5px;
+  overflow-y: scroll;
+  padding: 13px 0 13px 0;
+  &::-webkit-scrollbar {
+    width: 0.4rem;
+  }
+  &::-webkit-scrollbar-button {
+    height: 30px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: #aaa;
+    border-radius: 7px;
+    &:hover {
+      background: #888;
+    }
+  }
+`;
 
 class Rank extends Component {
   render() {
     return (
       <Main>
-        {rankeds.map(ranked => {
-          return <Ranked key={Math.random()} img={ranked} />;
-        })}
+        <Scroller>
+          {rankeds.map(ranked => {
+            return <Ranked key={Math.random()} img={ranked} />;
+          })}
+        </Scroller>
       </Main>
     );
   }

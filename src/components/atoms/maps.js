@@ -2,11 +2,9 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import Context from "../../context";
 
-import Maps from "../particles/maps";
+import Maps from "../particles/mapsApi";
 
 const Inputs = ["Localização", "Raio"];
-const Type = ["text", "number"];
-const Placeholder = ["Sua Localização", "Km"];
 
 const Main = styled.div`
   align-items: center;
@@ -49,6 +47,13 @@ const Main = styled.div`
   }
 `;
 
+const Div = styled.div`
+  margin-top: 0px;
+  p:first-child {
+    margin: 0;
+  }
+`;
+
 const Txt = styled.p`
   font-weight: bold;
   margin: 0;
@@ -62,26 +67,26 @@ class MapsApi extends Component {
       Raio: ""
     };
   }
+
   render() {
     return (
       <Main>
         <div>
-          {Inputs.map(input => {
-            return (
-              <div key={input}>
-                <p>{input}</p>
-                <input
-                  placeholder={Placeholder[Inputs.indexOf(input)]}
-                  type={Type[Inputs.indexOf(input)]}
-                />
-              </div>
-            );
-          })}
+          <div>
+            <p>{Inputs[0]}</p>
+            <input />
+          </div>
+          <div>
+            <p>{Inputs[1]}</p>
+            <input placeholder="Km" type="number" />
+          </div>
         </div>
         <div>
           <Maps />
-          <p>Alcance diário estimado em pessoas</p>
-          <Txt>2.000.000 as 3.500.000</Txt>
+          <Div>
+            <p>Alcance diário estimado em pessoas</p>
+            <Txt>2.000.000 as 3.500.000</Txt>
+          </Div>
         </div>
       </Main>
     );

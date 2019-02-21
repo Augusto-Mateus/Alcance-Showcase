@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import styled from "styled-components";
 
 import AgeRange from "../particles/ageRange";
-import MapsApi from "../atoms/mapsApi";
+import MapsApi from "../atoms/maps";
 import Background from "../../static/públicoAlvo.png";
 
 const webKit = "-webkit-";

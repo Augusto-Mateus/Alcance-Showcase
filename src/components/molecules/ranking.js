@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 
+import Context from "../../context";
 import Rank from "../atoms/rank";
 
 const Main = styled.div`
@@ -56,6 +57,14 @@ const Input = styled.input`
 `;
 
 class Ranking extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+    this.handleValue = event => {
+      const { value } = event.target;
+      this.context.setContext({ paymentValue: "R$" + value + ",00" });
+    };
+  }
   render() {
     return (
       <Main>
@@ -64,7 +73,11 @@ class Ranking extends Component {
             <p>
               Lorem <br /> impsum dolor <br /> sit amet.
             </p>
-            <Input placeholder="R$2.000,00" type="number" />
+            <Input
+              placeholder="R$2.000,00"
+              type="number"
+              onChange={this.handleValue}
+            />
             <p>
               Voce pode digitar valores diferentes <br /> para ver outras opções
               de anuncio.
@@ -76,5 +89,7 @@ class Ranking extends Component {
     );
   }
 }
+
+Ranking.contextType = Context;
 
 export default Ranking;

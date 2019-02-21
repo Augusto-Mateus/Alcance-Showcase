@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 import Background from "../../static/PAGAMENTO.png";
 import Cartao from "../../static/cartão.png";
+import Context from "../../context";
 import Paypal from "../../static/Paypal.png";
 
 const Main = styled.div`
@@ -119,7 +120,12 @@ const Btn = styled.button`
 `;
 
 class Pagamento extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
   render() {
+    const { paymentValue } = this.context;
     return (
       <Main>
         <Div>
@@ -139,7 +145,7 @@ class Pagamento extends Component {
             </div>
             <div>
               <p>Total a pagar</p>
-              <h1>R$ 2.000,00</h1>
+              <h1>{paymentValue}</h1>
             </div>
           </SubDivB>
         </Div>
@@ -150,5 +156,7 @@ class Pagamento extends Component {
     );
   }
 }
+
+Pagamento.contextType = Context;
 
 export default Pagamento;
