@@ -5,6 +5,7 @@ import Background from "../../static/PAGAMENTO.png";
 import Cartao from "../../static/cartão.png";
 import Context from "../../context";
 import Paypal from "../../static/Paypal.png";
+import width from "../../config";
 
 const Main = styled.div`
   align-items: center;
@@ -16,7 +17,7 @@ const Main = styled.div`
   flex-direction: column;
   height: 750px;
   justify-content: center;
-  padding: 0px 170px 0px 170px;
+  padding: ${width <= 768 ? "0 13px 0 13px " : "0px 170px 0px 170px"};
 `;
 
 const Div = styled.div`
@@ -59,7 +60,7 @@ const SubDivB = styled.div`
   margin: 0px;
   padding: 0px;
   text-align: center;
-  width: 50%;
+  width: ${width <= 768 ? "300px" : "50%"};
   div:first-child {
     align-items: center;
     background-color: #fff;
@@ -70,7 +71,7 @@ const SubDivB = styled.div`
     height: 100vh;
     justify-content: center;
     position: relative;
-    width: 100%;
+    width: ${width <= 768 ? "300px" : "100%"};
     z-index: 1;
     p {
       margin: 5px;
@@ -109,13 +110,13 @@ const Btn = styled.button`
   border: none;
   border-radius: 100px;
   height: 0px;
-  margin-left: 30vw;
-  margin-top: 40px;
+  margin-left: ${width <= 768 ? "0" : "30vw"};
+  margin-top: ${width <= 768 ? "0" : "40px"};
   width: 0px;
   img {
     height: 60px;
-    margin-top: -20px;
-    margin-left: -50px;
+    margin-top: ${width <= 768 ? "0" : "-20px"};
+    margin-left: ${width <= 768 ? "-120px" : "-50px"};
   }
 `;
 
@@ -128,13 +129,7 @@ class Pagamento extends Component {
     const { paymentValue } = this.context;
     return (
       <Main>
-        <Div>
-          <SubDivA>
-            <img src={Cartao} alt="Cartão" />
-            <p>
-              Informações <br /> de pagamento
-            </p>
-          </SubDivA>
+        {width <= 768 ? (
           <SubDivB>
             <div>
               <p>Quantidade de Anuncios</p>
@@ -147,11 +142,38 @@ class Pagamento extends Component {
               <p>Total a pagar</p>
               <h1>{paymentValue}</h1>
             </div>
+            <Btn>
+              <img src={Paypal} alt="Paypal" />
+            </Btn>
           </SubDivB>
-        </Div>
-        <Btn>
-          <img src={Paypal} alt="Paypal" />
-        </Btn>
+        ) : (
+          <>
+            <Div>
+              <SubDivA>
+                <img src={Cartao} alt="Cartão" />
+                <p>
+                  Informações <br /> de pagamento
+                </p>
+              </SubDivA>
+              <SubDivB>
+                <div>
+                  <p>Quantidade de Anuncios</p>
+                  <h1>Nº de Anuncios</h1>
+                  <hr />
+                  <p>Tempo de Vinculação</p>
+                  <h1>TEMPO</h1>
+                </div>
+                <div>
+                  <p>Total a pagar</p>
+                  <h1>{paymentValue}</h1>
+                </div>
+              </SubDivB>
+            </Div>
+            <Btn>
+              <img src={Paypal} alt="Paypal" />
+            </Btn>
+          </>
+        )}
       </Main>
     );
   }

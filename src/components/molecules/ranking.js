@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 import styled from "styled-components";
+import Carousel from "react-bootstrap/Carousel";
 
 import Context from "../../context";
 import Rank from "../atoms/rank";
+import width from "../../config";
 
 const Main = styled.div`
   background-color: #fd6d80;
@@ -11,7 +13,7 @@ const Main = styled.div`
   flex-direction: column;
   height: 725px;
   justify-content: center;
-  padding: 0px 170px 0px 170px;
+  padding: ${width <= 768 ? "20px" : "0px 170px 0px 170px"};
 `;
 
 const Div = styled.div`
@@ -29,7 +31,7 @@ const SubDiv = styled.div`
   justify-content: center;
   text-align: center;
   p:first-child {
-    font-size: 40px;
+    font-size: ${width <= 768 ? "30px" : "40px"};
   }
   p:last-child {
     font-size: auto;
@@ -42,14 +44,14 @@ const Input = styled.input`
   border: solid #fff 2px;
   border-radius: 100px;
   color: #fff;
-  font-size: 45px;
-  height: 60px;
+  font-size: ${width <= 768 ? "20px" : "45px"};
+  height: ${width <= 768 ? "30px" : "60px"};
   text-align: center;
   text-justify: center;
   width: 70%;
   ::placeholder {
     color: #fff;
-    font-size: 40px;
+    font-size: ${width <= 768 ? "20px" : "45px"};
     font-weight: bold;
     text-align: center;
     text-justify: center;
@@ -59,32 +61,80 @@ const Input = styled.input`
 class Ranking extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      index: 0,
+      indicators: false,
+      interval: 0,
+      direction: null
+    };
+    this.handleSelect = this.handleSelect.bind(this);
+
     this.handleValue = event => {
       const { value } = event.target;
       this.context.setContext({ paymentValue: "R$" + value + ",00" });
     };
   }
+
+  handleSelect(selectedIndex, e) {
+    this.setState({
+      index: selectedIndex,
+      direction: e.direction
+    });
+  }
+
   render() {
+    const { index, direction, interval, indicators } = this.state;
     return (
       <Main>
-        <Div>
-          <SubDiv>
-            <p>
-              Lorem <br /> impsum dolor <br /> sit amet.
-            </p>
-            <Input
-              placeholder="R$2.000,00"
-              type="number"
-              onChange={this.handleValue}
-            />
-            <p>
-              Voce pode digitar valores diferentes <br /> para ver outras opções
-              de anuncio.
-            </p>
-          </SubDiv>
-          <Rank />
-        </Div>
+        {width <= 768 ? (
+          <Carousel
+            activeIndex={index}
+            direction={direction}
+            onSelect={this.handleSelect}
+            interval={interval}
+            indicators={indicators}
+          >
+            <Carousel.Item>
+              <SubDiv>
+                <p>
+                  Lorem {width > 768 && <br />} impsum dolor{" "}
+                  {width > 768 && <br />} sit amet.
+                </p>
+                <Input
+                  placeholder="R$2.000,00"
+                  type="number"
+                  onChange={this.handleValue}
+                />
+                <p>
+                  Voce pode digitar valores diferentes {width > 768 && <br />}{" "}
+                  para ver outras opções de anuncio.
+                </p>
+              </SubDiv>
+            </Carousel.Item>
+            <Carousel.Item>
+              <Rank />
+            </Carousel.Item>
+          </Carousel>
+        ) : (
+          <Div>
+            <SubDiv>
+              <p>
+                Lorem {width > 768 && <br />} impsum dolor{" "}
+                {width > 768 && <br />} sit amet.
+              </p>
+              <Input
+                placeholder="R$2.000,00"
+                type="number"
+                onChange={this.handleValue}
+              />
+              <p>
+                Voce pode digitar valores diferentes {width > 768 && <br />}{" "}
+                para ver outras opções de anuncio.
+              </p>
+            </SubDiv>
+            <Rank />
+          </Div>
+        )}
       </Main>
     );
   }

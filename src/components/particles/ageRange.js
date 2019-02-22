@@ -1,10 +1,12 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 
+import width from "../../config";
+
 const Main = styled.div`
   align-items: center;
   display: flex;
-  margin-top: 50px;
+  margin-top: ${width <= 768 ? "0" : "50px"};
 
   hr {
     background-color: #626262;
@@ -21,10 +23,10 @@ const Div = styled.div`
   background: linear-gradient(to right, #fa7778, #fdb851);
   border-radius: 100px;
   display: flex;
-  height: 150px;
+  height: 110px;
   justify-content: center;
   padding: 0;
-  width: 150px;
+  width: ${width <= 768 ? "110px" : "150px"};
 
   input {
     align-items: center;
@@ -34,16 +36,17 @@ const Div = styled.div`
     color: #fa7778;
     display: flex;
     font-size: 75px;
-    height: 140px;
+    height: ${width <= 768 ? "100px" : "140px"};
     justify-content: center;
     margin: 0;
     text-align: center;
     text-indent: 15px;
-    width: 140px;
+    width: ${width <= 768 ? "100px" : "140px"};
 
     input:placeholder {
       color: #fa7778;
-      font-size: 75px;
+      text-align: center;
+      font-size: ${width <= 768 ? "60px" : "75px"};
     }
   }
 `;

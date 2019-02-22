@@ -4,6 +4,7 @@ import styled from "styled-components";
 import Facebook from "../../static/facebook.png";
 import Instagram from "../../static/instagram.png";
 import Spotify from "../../static/spotify.png";
+import width from "../../config";
 
 const icons = [Facebook, Instagram, Spotify];
 
@@ -11,7 +12,7 @@ const Main = styled.div`
   background-color: #f7f7fa;
   border-radius: 60px;
   height: 450px;
-  width: 31%;
+  width: ${width <= 768 ? "280px" : "31%"};
 `;
 
 const Div = styled.div`

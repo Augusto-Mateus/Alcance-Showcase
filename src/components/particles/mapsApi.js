@@ -8,16 +8,22 @@ import {
 } from "react-google-maps";
 import { compose, withProps } from "recompose";
 
+import width from "../../config";
+
 const Wrapper = styled.div`
-  height: 400px;
+  align-self: center;
+  height: ${width <= 768 ? "200px" : "400px"};
   margin: 0;
-  width: 400px;
+  width: ${width <= 768 ? "200px" : "400px"};
+  span {
+    display: none;
+  }
 `;
 
 const Map = styled.div`
   border-radius: 25px;
-  height: 400px;
-  width: 400px;
+  height: ${width <= 768 ? "200px" : "400px"};
+  width: ${width <= 768 ? "200px" : "400px"};
 `;
 
 const Maps = compose(

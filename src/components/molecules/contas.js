@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 import styled from "styled-components";
+import Carousel from "react-bootstrap/Carousel";
 
 import Account from "../atoms/account";
 import Background from "../../static/CONTAS.png";
+import width from "../../config";
 
 const accounts = ["FaceBook", "Instagram", "Youtube"];
 
@@ -15,8 +17,8 @@ const Main = styled.div`
   flex-direction: column;
   height: 650px;
   justify-content: center;
-  margin-top: -90px;
-  padding: 100px 170px 0px 170px;
+  margin-top: ${width <= 768 ? "-50px" : "-90px"};
+  padding: ${width <= 768 ? "100px 13px 0 13px" : "100px 170px 0px 170px"};
   p {
     color: #fff;
     font-size: 30px;
@@ -32,21 +34,70 @@ const Div = styled.div`
 `;
 
 class Contas extends Component {
+  constructor(props, context) {
+    super(props, context);
+
+    this.handleSelect = this.handleSelect.bind(this);
+
+    this.state = {
+      index: 0,
+      indicators: false,
+      interval: 0,
+      direction: null
+    };
+  }
+
+  handleSelect(selectedIndex, e) {
+    this.setState({
+      index: selectedIndex,
+      direction: e.direction
+    });
+  }
+
   render() {
+    const { index, direction, indicators, interval } = this.state;
     return (
       <Main>
-        <p>Sample</p>
-        <Div>
-          {accounts.map(account => {
-            return (
-              <Account
-                social={account}
-                key={account}
-                img={accounts.indexOf(account)}
-              />
-            );
-          })}
-        </Div>
+        {width <= 768 ? (
+          <>
+            <p>Sample</p>
+            <Carousel
+              activeIndex={index}
+              direction={direction}
+              indicators={indicators}
+              interval={interval}
+              onSelect={this.handleSelect}
+            >
+              {accounts.map(account => {
+                return (
+                  <Carousel.Item key={account}>
+                    <Div>
+                      <Account
+                        social={account}
+                        img={accounts.indexOf(account)}
+                      />
+                    </Div>
+                  </Carousel.Item>
+                );
+              })}
+            </Carousel>
+          </>
+        ) : (
+          <>
+            <p>Sample</p>
+            <Div>
+              {accounts.map(account => {
+                return (
+                  <Account
+                    social={account}
+                    key={account}
+                    img={accounts.indexOf(account)}
+                  />
+                );
+              })}
+            </Div>
+          </>
+        )}
       </Main>
     );
   }

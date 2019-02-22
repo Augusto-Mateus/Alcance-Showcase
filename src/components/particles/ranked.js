@@ -4,6 +4,7 @@ import styled from "styled-components";
 import facebook from "../../static/facebook.png";
 import instagram from "../../static/instagram.png";
 import spotify from "../../static/spotify.png";
+import width from "../../config";
 
 const imgs = [facebook, instagram, spotify];
 
@@ -51,12 +52,12 @@ const Graph = styled.div`
   border: solid #999 2px;
   border-radius: 100px;
   height: 15px;
-  width: 280px;
+  width: ${width <= 768 ? "100px;" : "280px;"};
   div {
     background-color: #00ccb4;
     background-repeat: no-repeat;
     border-radius: 100px;
-    height: 19px;
+    height: 15px;
     margin-left: -2px;
     margin-top: -2px;
     width: ${porcentagem + 3 + "%"};

@@ -3,6 +3,7 @@ import styled from "styled-components";
 import Context from "../../context";
 
 import Maps from "../particles/mapsApi";
+import width from "../../config";
 
 const Inputs = ["Localização", "Raio"];
 
@@ -13,12 +14,13 @@ const Main = styled.div`
   color: #fff;
   display: flex;
   flex-direction: column;
-  height: 580px;
+  height: ${width <= 768 ? "450px" : "580px"};
   justify-content: center;
-  width: 550px;
+  width: ${width <= 768 ? "300px" : "550px"};
 
   div {
     display: flex;
+    ${width <= 768 && "flex-direction: column;"}
     div {
       display: flex;
       flex-direction: column;
@@ -43,6 +45,7 @@ const Main = styled.div`
   }
 
   div:last-child {
+    display: flex;
     flex-direction: column;
   }
 `;

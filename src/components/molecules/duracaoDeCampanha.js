@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 import Background from "../../static/DuraçãoDeCampanha.png";
 import Calendar from "../../static/calendario.png";
+import width from "../../config";
 
 const Main = styled.div`
   align-items: center;
@@ -15,18 +16,20 @@ const Main = styled.div`
   font-size: 25px;
   height: 795px;
   justify-content: center;
-  padding: 0px 170px 0px 170px;
+  padding: ${width <= 768 ? "0 13px 0 13px" : "0px 170px 0px 170px"};
   div {
     hr {
       border: solid 1px #626262;
-      height: 100px;
+      height: ${width <= 768 ? "0" : "100px"};
       margin: 0;
+      ${width <= 768 && "width: 100px;"}
     }
   }
   p:first-child {
     font-size: 30px;
   }
   h4 {
+    ${width <= 768 && "fonst-size: 15px;"}
     margin: 0px;
   }
 `;
@@ -57,23 +60,27 @@ const SubDivA = styled.div`
 
 const SubDivB = styled.div`
   align-items: center;
+  ${width <= 768 && "border-radius: 30px;"}
   background-color: #fff;
   color: #626262;
   display: flex;
+  ${width <= 768 && "flex-direction: column;"}
   font-size: 20px;
   justify-content: space-around;
+  ${width <= 768 && "padding: 10px;"}
   text-align: center;
-  width: 77%;
+  width: ${width <= 768 ? "300px" : "77%"};
   p {
-    margin-top: 0px;
+    margin: ${width <= 768 ? "0" : "0 auto auto auto"};
   }
   input {
     border: #069dc8 inset 2px;
     border-radius: 100px;
     font-size: 20px;
     height: 45px;
+    ${width <= 768 && "margin: 22px;"}
     text-indent: 10px;
-    width: 14.5vw;
+    width: ${width <= 768 ? "180px" : "14.5vw"};
   }
 `;
 
@@ -118,11 +125,7 @@ class DuracaoDeCampanha extends Component {
         : (this.state.finalDate - this.state.initialDate) / 86400000;
     return (
       <Main>
-        <p>Escolha duração de campanha</p>
-        <Div>
-          <SubDivA>
-            <img src={Calendar} alt="Calendar" />
-          </SubDivA>
+        {width <= 768 ? (
           <SubDivB>
             <div>
               <p>Data de Inicio:</p>
@@ -140,18 +143,55 @@ class DuracaoDeCampanha extends Component {
                 defaultValue={this.defaultDate}
                 onChange={this.finalDate}
               />
+              <p>Tempo de duração da campanha</p>
+              <h4>
+                {promptMonth < 1 || isNaN(promptDay) === true
+                  ? null
+                  : promptMonth + " Meses e "}
+                {promptDay < 0 || isNaN(promptDay) === true
+                  ? "Este não é um prazo valido"
+                  : promptDay + " Dias"}
+              </h4>
             </div>
           </SubDivB>
-        </Div>
-        <p>Tempo de duração da campanha</p>
-        <h4>
-          {promptMonth < 1 || isNaN(promptDay) === true
-            ? null
-            : promptMonth + " Meses e "}
-          {promptDay < 0 || isNaN(promptDay) === true
-            ? "Este não é um prazo valido"
-            : promptDay + " Dias"}
-        </h4>
+        ) : (
+          <>
+            <p>Escolha duração de campanha</p>
+            <Div>
+              <SubDivA>
+                <img src={Calendar} alt="Calendar" />
+              </SubDivA>
+              <SubDivB>
+                <div>
+                  <p>Data de Inicio:</p>
+                  <input
+                    type="date"
+                    defaultValue={this.defaultDate}
+                    onChange={this.initialDate}
+                  />
+                </div>
+                <hr />
+                <div>
+                  <p>Data de Encerramento:</p>
+                  <input
+                    type="date"
+                    defaultValue={this.defaultDate}
+                    onChange={this.finalDate}
+                  />
+                </div>
+              </SubDivB>
+            </Div>
+            <p>Tempo de duração da campanha</p>
+            <h4>
+              {promptMonth < 1 || isNaN(promptDay) === true
+                ? null
+                : promptMonth + " Meses e "}
+              {promptDay < 0 || isNaN(promptDay) === true
+                ? "Este não é um prazo valido"
+                : promptDay + " Dias"}
+            </h4>
+          </>
+        )}
       </Main>
     );
   }

@@ -2,8 +2,10 @@ import React, { Component } from "react";
 import styled from "styled-components";
 
 import AgeRange from "../particles/ageRange";
-import MapsApi from "../atoms/maps";
 import Background from "../../static/públicoAlvo.png";
+import Carousel from "react-bootstrap/Carousel";
+import Maps from "../atoms/maps";
+import width from "../../config";
 
 const webKit = "-webkit-";
 
@@ -17,12 +19,17 @@ const Main = styled.div`
   height: 760px;
   justify-content: center;
   margin: 0 0 0 0;
-  padding: 0px 170px 0px 170px;
+  padding: ${width <= 768 ? "0" : "0px 170px 0px 170px"};
+  span {
+    background-image: linear-gradient(to right, #fdb851, #fa7778);
+    border-radius: 100vw;
+  }
 `;
 
 const Div = styled.div`
   align-items: center;
   display: flex;
+  ${width <= 768 && "flex-direction: column;"}
   justify-content: space-between;
   margin: 0 0 0 0;
   width: 100%;
@@ -38,18 +45,61 @@ const Txt = styled.p`
 `;
 
 class PublicoAlvo extends Component {
+  constructor(props, context) {
+    super(props, context);
+
+    this.handleSelect = this.handleSelect.bind(this);
+
+    this.state = {
+      index: 0,
+      indicators: false,
+      interval: 0,
+      direction: null
+    };
+  }
+
+  handleSelect(selectedIndex, e) {
+    this.setState({
+      index: selectedIndex,
+      direction: e.direction
+    });
+  }
+
   render() {
+    const { index, direction, indicators, interval } = this.state;
     return (
       <Main>
-        <Div>
-          <div>
-            <Txt>
-              Qual a idade <br /> do público alvo?
-            </Txt>
-            <AgeRange />
-          </div>
-          <MapsApi title="Maps">MapsApi</MapsApi>
-        </Div>
+        {width <= 768 ? (
+          <Carousel
+            activeIndex={index}
+            direction={direction}
+            indicators={indicators}
+            interval={interval}
+            onSelect={this.handleSelect}
+          >
+            <Carousel.Item>
+              <Div>
+                <Txt>
+                  Qual a idade <br /> do público alvo?
+                </Txt>
+                <AgeRange />
+              </Div>
+            </Carousel.Item>
+            <Carousel.Item>
+              <Maps title="Maps" />
+            </Carousel.Item>
+          </Carousel>
+        ) : (
+          <Div>
+            <div>
+              <Txt>
+                Qual a idade <br /> do público alvo?
+              </Txt>
+              <AgeRange />
+            </div>
+            <Maps title="Maps" />
+          </Div>
+        )}
       </Main>
     );
   }

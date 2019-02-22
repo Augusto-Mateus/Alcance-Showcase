@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 
+import Background from "../../static/segmentação.png";
 import CircularGraph from "../particles/circularGraph";
 import LoadBar from "../particles/loadBar";
-import Background from "../../static/segmentação.png";
+import width from "../../config";
 
 const Main = styled.div`
   align-items: center;
@@ -13,7 +14,7 @@ const Main = styled.div`
   display: flex;
   flex-direction: column;
   height: 705px;
-  padding: 140px 170px 0px 170px;
+  padding: ${width <= 768 ? "140px 0 0 0" : "140px 170px 0 170px"};
 `;
 
 const Title = styled.p`
@@ -26,7 +27,8 @@ const Title = styled.p`
 
 const Txt = styled.p`
   color: #999;
-  font-size: 30px;
+  font-size: ${width <= 768 ? "20px" : "30px"};
+  ${width <= 768 && "margin-bottom: 40px;"}
 `;
 
 class Segmentacao extends Component {

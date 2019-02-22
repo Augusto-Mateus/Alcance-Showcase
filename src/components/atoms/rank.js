@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import styled from "styled-components";
 
 import Ranked from "../particles/ranked";
+import width from "../../config";
 
 const rankeds = [0, 1, 2, 1];
 
@@ -11,7 +12,7 @@ const Main = styled.div`
   height: 500px;
   padding: 0px 13px 0px 13px;
   overflow: hidden;
-  width: 500px;
+  width: ${width <= 768 ? "300px" : "500px"};
   &:after {
   }
 `;
@@ -20,7 +21,7 @@ const Scroller = styled.div`
   border-radius: 50px;
   height: 100%;
   margin-right: -5px;
-  overflow-y: scroll;
+  ${width <= 768 ? "overflow-x: hidden;" : "overflow-y: scroll;"}
   padding: 13px 0 13px 0;
   &::-webkit-scrollbar {
     width: 0.4rem;
