@@ -6,6 +6,7 @@ import FirebaseAuth from "react-firebaseui/FirebaseAuth";
 import Button from "../particles/button";
 import Input from "../particles/input";
 import Context from "../../context";
+import width from "../../config";
 
 const Main = styled.div`
   align-items: center;
@@ -15,7 +16,7 @@ const Main = styled.div`
   flex-direction: column;
   height: 400px;
   justify-content: center;
-  width: 360px;
+  width: ${width <= 768 ? "300px" : "360px"};
 
   p {
     margin: 5px;

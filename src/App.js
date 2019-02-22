@@ -2,10 +2,11 @@ import React, { Component } from "react";
 import styled from "styled-components";
 
 import Background from "./static/LandingPageBackground.png";
+import width from "./config";
+import Context from "./context";
 import Menu from "./components/atoms/menu";
 import Home from "./components/molecules/home";
 import ToggleSections from "./components/molecules/toggleSections";
-import Context from "./context";
 
 const Main = styled.div`
   display: flex;
@@ -16,7 +17,7 @@ const LandingPageHome = styled.div`
   background-image: url(${Background});
   background-repeat: no-repeat;
   background-size: cover;
-  padding: 80px 170px 0px 170px;
+  padding: ${width <= 768 ? 0 : "80px 170px 0px 170px"};
 `;
 
 const LandingPageSections = styled.div`
@@ -34,15 +35,26 @@ class App extends Component {
   render() {
     return (
       <Context.Provider value={this.state}>
-        <Main>
-          <LandingPageSections>
-            <ToggleSections />
-          </LandingPageSections>
-          <LandingPageHome className="App">
-            <Menu />
-            <Home />
-          </LandingPageHome>
-        </Main>
+        {width <= 768 ? (
+          <Main>
+            <LandingPageSections>
+              <ToggleSections />
+            </LandingPageSections>
+            <LandingPageHome className="App">
+              <Home />
+            </LandingPageHome>
+          </Main>
+        ) : (
+          <Main>
+            <LandingPageSections>
+              <ToggleSections />
+            </LandingPageSections>
+            <LandingPageHome className="App">
+              <Menu />
+              <Home />
+            </LandingPageHome>
+          </Main>
+        )}
       </Context.Provider>
     );
   }

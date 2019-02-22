@@ -7,7 +7,6 @@ import {
   Marker
 } from "react-google-maps";
 import { compose, withProps } from "recompose";
-import Context from "../../context";
 
 const Wrapper = styled.div`
   height: 400px;
@@ -74,8 +73,6 @@ class MapsApi extends Component {
     );
   }
 }
-
-Maps.contextType = Context;
 
 export default MapsApi;
 
