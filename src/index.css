@@ -10,3 +10,18 @@ body {
   margin: auto;
   width: 100%;
 }
+
+.carousel-control-next-icon {
+  border-bottom: 15px solid transparent;
+  border-left: 15px solid #626262;
+  border-top: 15px solid transparent;
+  height: 0;
+  width: 0;
+}
+.carousel-control-prev-icon {
+  border-bottom: 15px solid transparent;
+  border-right: 15px solid #626262;
+  border-top: 15px solid transparent;
+  height: 0;
+  width: 0;
+}

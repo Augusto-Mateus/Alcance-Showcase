@@ -13,8 +13,8 @@ const Main = styled.div`
   background-size: cover;
   display: flex;
   flex-direction: column;
-  height: 705px;
-  padding: ${width <= 768 ? "140px 0 0 0" : "140px 170px 0 170px"};
+  height: 845px;
+  padding: ${width <= 768 ? "160px 0 0 0" : "160px 170px 0 170px"};
 `;
 
 const Title = styled.p`

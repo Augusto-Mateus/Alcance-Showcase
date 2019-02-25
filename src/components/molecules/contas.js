@@ -15,10 +15,10 @@ const Main = styled.div`
   background-size: cover;
   display: flex;
   flex-direction: column;
-  height: 650px;
+  height: 680px;
   justify-content: center;
   margin-top: ${width <= 768 ? "-50px" : "-90px"};
-  padding: ${width <= 768 ? "100px 13px 0 13px" : "100px 170px 0px 170px"};
+  padding: ${width <= 768 ? "120px 13px 0 13px" : "120px 170px 0px 170px"};
   p {
     color: #fff;
     font-size: 30px;

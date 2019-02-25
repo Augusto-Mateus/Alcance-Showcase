@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 import Background from "../../static/DuraçãoDeCampanha.png";
 import Calendar from "../../static/calendario.png";
+import Context from "../../context";
 import width from "../../config";
 
 const Main = styled.div`
@@ -49,7 +50,7 @@ const SubDivA = styled.div`
   background: linear-gradient(#01d2c6, #05aac7);
   border-radius: 50px;
   display: flex;
-  height: 170px;
+  height: 200px;
   justify-content: center;
   padding-top: 30px;
   width: 23%;
@@ -196,5 +197,7 @@ class DuracaoDeCampanha extends Component {
     );
   }
 }
+
+DuracaoDeCampanha.contextType = Context;
 
 export default DuracaoDeCampanha;

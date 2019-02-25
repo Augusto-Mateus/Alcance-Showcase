@@ -20,10 +20,6 @@ const Main = styled.div`
   justify-content: center;
   margin: 0 0 0 0;
   padding: ${width <= 768 ? "0" : "0px 170px 0px 170px"};
-  span {
-    background-image: linear-gradient(to right, #fdb851, #fa7778);
-    border-radius: 100vw;
-  }
 `;
 
 const Div = styled.div`

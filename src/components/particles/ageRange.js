@@ -23,7 +23,7 @@ const Div = styled.div`
   background: linear-gradient(to right, #fa7778, #fdb851);
   border-radius: 100px;
   display: flex;
-  height: 110px;
+  height: ${width <= 768 ? "110px" : "150px"};
   justify-content: center;
   padding: 0;
   width: ${width <= 768 ? "110px" : "150px"};
@@ -35,19 +35,12 @@ const Div = styled.div`
     border-radius: 100px;
     color: #fa7778;
     display: flex;
-    font-size: 75px;
+    font-size: ${width <= 768 ? "60px" : "75px"};
     height: ${width <= 768 ? "100px" : "140px"};
-    justify-content: center;
     margin: 0;
     text-align: center;
-    text-indent: 15px;
+    ${width >= 768 && "text-indent: 15px;"}
     width: ${width <= 768 ? "100px" : "140px"};
-
-    input:placeholder {
-      color: #fa7778;
-      text-align: center;
-      font-size: ${width <= 768 ? "60px" : "75px"};
-    }
   }
 `;
 

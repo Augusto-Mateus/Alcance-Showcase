@@ -126,7 +126,7 @@ class Pagamento extends Component {
     this.state = {};
   }
   render() {
-    const { paymentValue } = this.context;
+    const { paymentValue, prompt } = this.context;
     return (
       <Main>
         {width <= 768 ? (
@@ -161,7 +161,7 @@ class Pagamento extends Component {
                   <h1>Nº de Anuncios</h1>
                   <hr />
                   <p>Tempo de Vinculação</p>
-                  <h1>TEMPO</h1>
+                  <h1>{prompt}</h1>
                 </div>
                 <div>
                   <p>Total a pagar</p>

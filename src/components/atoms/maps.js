@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import Context from "../../context";
 
-import Maps from "../particles/mapsApi";
+import MapsApi from "../particles/mapsApi";
 import width from "../../config";
 
 const Inputs = ["Localização", "Raio"];
@@ -62,7 +62,7 @@ const Txt = styled.p`
   margin: 0;
 `;
 
-class MapsApi extends Component {
+class Maps extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -85,7 +85,7 @@ class MapsApi extends Component {
           </div>
         </div>
         <div>
-          <Maps />
+          <MapsApi />
           <Div>
             <p>Alcance diário estimado em pessoas</p>
             <Txt>2.000.000 as 3.500.000</Txt>
@@ -96,6 +96,6 @@ class MapsApi extends Component {
   }
 }
 
-MapsApi.contextType = Context;
+Maps.contextType = Context;
 
-export default MapsApi;
+export default Maps;

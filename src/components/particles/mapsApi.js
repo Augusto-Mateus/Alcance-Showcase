@@ -1,85 +1,47 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import {
-  withScriptjs,
-  withGoogleMap,
-  GoogleMap,
-  Marker
-} from "react-google-maps";
-import { compose, withProps } from "recompose";
 
 import width from "../../config";
 
-const Wrapper = styled.div`
+const Main = styled.div`
   align-self: center;
-  height: ${width <= 768 ? "200px" : "400px"};
-  margin: 0;
-  width: ${width <= 768 ? "200px" : "400px"};
-  span {
-    display: none;
-  }
-`;
-
-const Map = styled.div`
   border-radius: 25px;
-  height: ${width <= 768 ? "200px" : "400px"};
-  width: ${width <= 768 ? "200px" : "400px"};
+  height: ${width <= 768 ? "190px" : "320px"};
+  width: ${width <= 768 ? "250px" : "400px"};
 `;
-
-const Maps = compose(
-  withProps({
-    googleMapURL:
-      "https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places",
-    loadingElement: <div style={{ height: `100%` }} />,
-    containerElement: <Wrapper />,
-    mapElement: <Map style={{ margin: `0 0 -100px 0` }} />
-  }),
-  withScriptjs,
-  withGoogleMap
-)(props => (
-  <GoogleMap
-    defaultZoom={12}
-    defaultCenter={{ lat: -23.5209643, lng: -46.7114534 }}
-  >
-    {props.isMarkerShown && (
-      <Marker position={{ lat: -23.5209643, lng: -46.7114534 }} />
-    )}
-  </GoogleMap>
-));
 
 class MapsApi extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      isMarkerShown: false
-    };
-  }
-
   componentDidMount() {
-    this.delayedShowMarker();
+    this.renderMap();
   }
 
-  delayedShowMarker = () => {
-    setTimeout(() => {
-      this.setState({ isMarkerShown: true });
-    }, 300);
-  };
-
-  handleMarkerClick = () => {
-    this.setState({ isMarkerShown: false });
-    this.delayedShowMarker();
-  };
-
-  render() {
-    return (
-      <Maps
-        isMarkerShown={this.state.isMarkerShown}
-        onMarkerClick={this.handleMarkerClick}
-      />
+  renderMap = () => {
+    loadScript(
+      "https://maps.googleapis.com/maps/api/js?key=AIzaSyD2atUYInE6aLgfmXoJeaV11dTq2i3szAA&callback=initMap"
+      // AIzaSyD2atUYInE6aLgfmXoJeaV11dTq2i3szAA
     );
+    window.initMap = this.initMap;
+  };
+
+  initMap = () => {
+    new window.google.maps.Map(document.getElementById("map"), {
+      center: { lat: -23.5209642, lng: -46.7466352 },
+      zoom: 13,
+      disableDefaultUI: true
+    });
+  };
+  render() {
+    return <Main title="Google Maps" id="map" />;
   }
 }
 
-export default MapsApi;
+function loadScript(url) {
+  var index = window.document.getElementsByTagName("script")[0];
+  var script = window.document.createElement("script");
+  script.src = url;
+  script.async = true;
+  script.defer = true;
+  index.parentNode.insertBefore(script, index);
+}
 
-// key=AIzaSyD2atUYInE6aLgfmXoJeaV11dTq2i3szAA&
+export default MapsApi;
