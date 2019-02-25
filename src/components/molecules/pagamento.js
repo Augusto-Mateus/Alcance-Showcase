@@ -123,10 +123,26 @@ const Btn = styled.button`
 class Pagamento extends Component {
   constructor(props) {
     super(props);
+    this.newDate = new Date();
+    this.valueMonth = this.newDate.getMonth() + 1;
     this.state = {};
   }
   render() {
-    const { paymentValue, prompt } = this.context;
+    const { paymentValue, initialDate, finalDate } = this.context;
+    const promptMonth = Math.floor((finalDate - initialDate) / 86400000 / 30);
+    const promptDay =
+      this.valueMonth >= 2
+        ? (finalDate - initialDate) / 86400000 >= 30
+          ? (finalDate - initialDate) / 86400000 -
+            27 -
+            30 * (promptMonth - 1) -
+            Math.ceil((2 * promptMonth) / 4)
+          : (finalDate - initialDate) / 86400000
+        : (finalDate - initialDate) / 86400000 >= 30
+        ? (finalDate - initialDate) / 86400000 -
+          30 * promptMonth -
+          Math.ceil((2 * promptMonth) / 4)
+        : (finalDate - initialDate) / 86400000;
     return (
       <Main>
         {width <= 768 ? (
@@ -161,7 +177,14 @@ class Pagamento extends Component {
                   <h1>Nº de Anuncios</h1>
                   <hr />
                   <p>Tempo de Vinculação</p>
-                  <h1>{prompt}</h1>
+                  <h1>
+                    {promptMonth < 1 || isNaN(promptDay) === true
+                      ? null
+                      : promptMonth + " Meses e "}
+                    {promptDay < 0 || isNaN(promptDay) === true
+                      ? "Este não é um prazo valido"
+                      : promptDay + " Dias"}
+                  </h1>
                 </div>
                 <div>
                   <p>Total a pagar</p>

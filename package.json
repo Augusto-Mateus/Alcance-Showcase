@@ -4,6 +4,7 @@
   "private": true,
   "homepage": "https://augusto-mateus.github.io/Alcance-Showcase/",
   "dependencies": {
+    "axios": "^0.18.0",
     "bootstrap": "^4.3.1",
     "firebase": "^5.8.2",
     "firebaseui": "^3.5.2",

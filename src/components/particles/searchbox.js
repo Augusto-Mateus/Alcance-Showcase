@@ -1,75 +1,41 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import { withScriptjs, StandaloneSearchBox } from "react-google-maps";
-import { compose, withProps } from "recompose";
+import axios from "axios";
+import { key } from "../../config";
 
 const Main = styled.input`
-  background-color: rgba(0, 0, 0, 0);
-  border: solid #fff 1px;
-  border-radius: 100px;
-  color: #fff;
+  border: solid 0.5px #fff;
+  border-radius: 100vw;
   height: 25px;
-  text-indent: 10px;
-  input::placeholder {
-    color: #fff;
-    font-size: 15px;
-    font-weight: bold;
-  }
+  width: 100%;
 `;
-
-const SearchBoxCreator = compose(
-  withProps({
-    googleMapURL:
-      "https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places",
-    loadingElement: <div style={{ height: `100%` }} />,
-    containerElement: <div style={{ height: `400px` }} />
-  }),
-  withScriptjs
-)(props => (
-  <div data-standalone-searchbox="">
-    <StandaloneSearchBox
-      ref={props.onSearchBoxMounted}
-      bounds={props.bounds}
-      onPlacesChanged={props.onPlacesChanged}
-    >
-      <Main type="text" placeholder="Localização" />
-    </StandaloneSearchBox>
-    <ol>
-      {props.places.map(
-        ({ place_id, formatted_address, geometry: { location } }) => (
-          <li key={place_id}>
-            {formatted_address}
-            {" at "}({location.lat()}, {location.lng()})
-          </li>
-        )
-      )}
-    </ol>
-  </div>
-));
 
 class SearchInput extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
-  }
-  componentWillMount() {
-    const refs = {};
-    this.setState({
-      places: [],
-      onSearchBoxMounted: ref => {
-        refs.SearchBox = ref;
-      },
-      onPlacesChanged: () => {
-        const places = refs.searchBox.getPlaces();
-
-        this.setState({
-          places
-        });
-      }
-    });
+    this.state = {
+      query: ""
+    };
+    this.getPlaces = () => {
+      const query = this.state.query;
+      axios
+        .get("https://maps.googleapis.com/maps/api/place/textsearch/json", {
+          params: { query, key: key }
+        })
+        .then(res => {
+          const { candidates } = res.data;
+          console.log(candidates);
+        })
+        .catch(err => console.log(err));
+    };
+    this.handleLocation = event => {
+      const { value } = event.target;
+      this.setState({ query: value });
+      this.getPlaces();
+    };
   }
   render() {
-    return <SearchBoxCreator />;
+    return <Main placeholder="Localização" onChange={this.handleLocation} />;
   }
 }
 

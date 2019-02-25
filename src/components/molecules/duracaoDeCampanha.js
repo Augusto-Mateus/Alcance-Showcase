@@ -101,10 +101,12 @@ class DuracaoDeCampanha extends Component {
     //Input prompt values
     this.initialDate = event => {
       const { value } = event.target;
+      this.context.setContext({ initialDate: Date.parse(value) });
       this.setState({ initialDate: Date.parse(value) });
     };
     this.finalDate = event => {
       const { value } = event.target;
+      this.context.setContext({ finalDate: Date.parse(value) });
       this.setState({ finalDate: Date.parse(value) });
     };
     //States
@@ -119,7 +121,14 @@ class DuracaoDeCampanha extends Component {
       (this.state.finalDate - this.state.initialDate) / 86400000 / 30
     );
     const promptDay =
-      (this.state.finalDate - this.state.initialDate) / 86400000 >= 30
+      this.valueMonth >= 2
+        ? (this.state.finalDate - this.state.initialDate) / 86400000 >= 30
+          ? (this.state.finalDate - this.state.initialDate) / 86400000 -
+            27 -
+            30 * (promptMonth - 1) -
+            Math.ceil((2 * promptMonth) / 4)
+          : (this.state.finalDate - this.state.initialDate) / 86400000
+        : (this.state.finalDate - this.state.initialDate) / 86400000 >= 30
         ? (this.state.finalDate - this.state.initialDate) / 86400000 -
           30 * promptMonth -
           Math.ceil((2 * promptMonth) / 4)

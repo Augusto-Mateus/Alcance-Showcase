@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-
-import width from "../../config";
+import { width, key } from "../../config";
 
 const Main = styled.div`
   align-self: center;
@@ -17,8 +16,7 @@ class MapsApi extends Component {
 
   renderMap = () => {
     loadScript(
-      "https://maps.googleapis.com/maps/api/js?key=AIzaSyD2atUYInE6aLgfmXoJeaV11dTq2i3szAA&callback=initMap"
-      // AIzaSyD2atUYInE6aLgfmXoJeaV11dTq2i3szAA
+      "https://maps.googleapis.com/maps/api/js?key=" + key + "&callback=initMap"
     );
     window.initMap = this.initMap;
   };
@@ -26,12 +24,16 @@ class MapsApi extends Component {
   initMap = () => {
     new window.google.maps.Map(document.getElementById("map"), {
       center: { lat: -23.5209642, lng: -46.7466352 },
-      zoom: 13,
+      zoom: 14,
       disableDefaultUI: true
     });
   };
   render() {
-    return <Main title="Google Maps" id="map" />;
+    return (
+      <>
+        <Main title="Google Maps" id="map" />
+      </>
+    );
   }
 }
 
