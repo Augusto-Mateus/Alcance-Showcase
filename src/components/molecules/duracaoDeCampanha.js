@@ -75,19 +75,37 @@ const SubDivB = styled.div`
     margin: ${width <= 768 ? "0" : "0 auto auto auto"};
   }
   input {
-    border: #069dc8 inset 2px;
-    border-radius: 100px;
+    border: solid 2px transparent;
+    background-image: linear-gradient(white, white),
+      radial-gradient(circle at left, #00a8b5, #51eaea);
+    background-origin: border-box;
+    background-clip: content-box, border-box;
+    border-radius: 100vw;
     font-size: 20px;
+    font-family: "Julius Sans One", sans-serif;
     height: 45px;
     ${width <= 768 && "margin: 22px;"}
-    text-indent: 10px;
+    text-align: center;
     width: ${width <= 768 ? "180px" : "14.5vw"};
+  }
+  input::-webkit-calendar-picker-indicator,
+  input::-webkit-inner-spin-button,
+  input::-webkit-clear-button {
+    display: none;
   }
 `;
 
 class DuracaoDeCampanha extends Component {
+  componentDidMount() {
+    this.context.setContext({
+      initialDate: Date.parse(this.defaultDate),
+      finalDate: Date.parse(this.defaultDate)
+    });
+  }
+
   constructor(props) {
     super(props);
+
     //Default date input
     this.newDate = new Date();
     this.year = this.newDate.getFullYear();
@@ -98,6 +116,7 @@ class DuracaoDeCampanha extends Component {
         : this.valueMonth;
     this.day = this.newDate.getDate();
     this.defaultDate = this.year + "-" + this.month + "-" + this.day;
+
     //Input prompt values
     this.initialDate = event => {
       const { value } = event.target;
@@ -109,6 +128,7 @@ class DuracaoDeCampanha extends Component {
       this.context.setContext({ finalDate: Date.parse(value) });
       this.setState({ finalDate: Date.parse(value) });
     };
+
     //States
     this.state = {
       initialDate: Date.parse(this.defaultDate),

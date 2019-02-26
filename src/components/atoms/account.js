@@ -9,22 +9,36 @@ import width from "../../config";
 const icons = [Facebook, Instagram, Spotify];
 
 const Main = styled.div`
-  background-color: #f7f7fa;
-  border-radius: 60px;
+  background: #f7f7fa;
+  border-radius: 50px;
   height: 450px;
+  overflow: hidden;
+  position: relative;
   width: ${width <= 768 ? "280px" : "31%"};
+  &:after {
+    bottom: 0;
+    content: "";
+    height: 5rem;
+    position: absolute;
+    width: 100%;
+    background-image: linear-gradient(to bottom, transparent, white);
+  }
 `;
 
 const Div = styled.div`
   align-items: center;
-  background-color: #fff;
-  border-radius: 100px;
-  box-shadow: 0px 20px 50px #ddd;
+  background-color: #ffffff;
+  border-radius: 100vw;
+  box-shadow: 0px 20px 80px 3px #ccc;
+  margin: 0;
   display: flex;
-  justify-content: flex-start;
-  top: 0;
   height: 100px;
+  justify-content: flex-start;
   width: 100%;
+  padding: 0rem;
+  position: sticky;
+  top: 0;
+
   div {
     p {
       color: #626262;
@@ -52,6 +66,34 @@ const SubDiv = styled.div`
   }
 `;
 
+const Scroller = styled.div`
+  margin-top: -10px;
+  height: 80%;
+  ${width <= 768 ? "overflow-x: hidden;" : "overflow-y: scroll;"}
+  &::-webkit-scrollbar {
+    width: 4px;
+  }
+  &::-webkit-scrollbar-button {
+    height: 30px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: #aaa;
+    border-radius: 7px;
+    &:hover {
+      background: #888;
+    }
+  }
+`;
+
+const Sample = styled.div`
+  background-color: #626262;
+  border-radius: 8px;
+  height: 80px;
+  margin: 30px 0 0 20px;
+  width: 80%;
+  padding: 0;
+`;
+
 class Account extends Component {
   render() {
     return (
@@ -65,6 +107,19 @@ class Account extends Component {
             <p>Sample</p>
           </div>
         </Div>
+        <Scroller>
+          <Sample />
+          <Sample />
+          <Sample />
+          <Sample />
+          <Sample />
+          <Sample />
+          <Sample />
+          <Sample />
+          <Sample />
+          <Sample />
+          <Sample />
+        </Scroller>
       </Main>
     );
   }
