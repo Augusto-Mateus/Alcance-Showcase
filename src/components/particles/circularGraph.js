@@ -24,7 +24,7 @@ const Main = styled.div`
   display: flex;
   color: #fff;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: center;
   margin: ${width <= 768 ? "0" : "50px 0 0 0"};
   ${width <= 768 && "overflow-x: scroll;"}
   width: 100%;
@@ -48,6 +48,7 @@ const SubDiv = styled.div`
   flex-direction: column;
   height: 180px;
   justify-content: center;
+  ${width > 768 && "margin: 0 20px 0 20px;"}
   width: 180px;
 `;
 
