@@ -4,7 +4,7 @@ self.__precacheManifest = [
     "url": "/Alcance-Showcase/static/media/CONTAS.eb121920.png"
   },
   {
-    "revision": "ca476a5a91afac31b71e",
+    "revision": "f4a32b0844b9d97b2350",
     "url": "/Alcance-Showcase/static/css/main.a6987f60.chunk.css"
   },
   {
@@ -28,8 +28,8 @@ self.__precacheManifest = [
     "url": "/Alcance-Showcase/static/media/Logo.2e718250.png"
   },
   {
-    "revision": "ca476a5a91afac31b71e",
-    "url": "/Alcance-Showcase/static/js/main.ca476a5a.chunk.js"
+    "revision": "f4a32b0844b9d97b2350",
+    "url": "/Alcance-Showcase/static/js/main.f4a32b08.chunk.js"
   },
   {
     "revision": "0e8a3fd3c4af8f00140dde806bfa4890",
@@ -56,7 +56,7 @@ self.__precacheManifest = [
     "url": "/Alcance-Showcase/static/css/2.3107812a.chunk.css"
   },
   {
-    "revision": "f4404123c97fc641f3f7e9849ed77900",
+    "revision": "e7986dacd2daac3186481efd2e8a7403",
     "url": "/Alcance-Showcase/index.html"
   }
 ];
