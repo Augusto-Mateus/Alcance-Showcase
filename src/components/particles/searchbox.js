@@ -20,7 +20,7 @@ class SearchInput extends Component {
       const query = this.state.query;
       axios
         .get("https://maps.googleapis.com/maps/api/place/textsearch/json", {
-          params: { query, key: key }
+          params: { query, key: key, rankby: "radius" }
         })
         .then(res => {
           const { candidates } = res.data;
