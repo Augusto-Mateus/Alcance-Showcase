@@ -71,7 +71,7 @@ class Ranking extends Component {
 
     this.handleValue = event => {
       const { value } = event.target;
-      this.context.setContext({ paymentValue: "R$" + value + ",00" });
+      this.context.setContext({ paymentValue: value + ".00" });
     };
   }
 
@@ -101,7 +101,7 @@ class Ranking extends Component {
                   {width > 768 && <br />} sit amet.
                 </p>
                 <Input
-                  placeholder="R$2.000,00"
+                  placeholder="R$2000.00"
                   type="number"
                   onChange={this.handleValue}
                 />
@@ -119,16 +119,16 @@ class Ranking extends Component {
           <Div>
             <SubDiv>
               <p>
-                Lorem {width > 768 && <br />} impsum dolor{" "}
+                Lorem {width > 768 && <br />} impsum dolor
                 {width > 768 && <br />} sit amet.
               </p>
               <Input
-                placeholder="R$2.000,00"
+                placeholder="R$2000.00"
                 type="number"
                 onChange={this.handleValue}
               />
               <p>
-                Voce pode digitar valores diferentes {width > 768 && <br />}{" "}
+                Voce pode digitar valores diferentes {width > 768 && <br />}
                 para ver outras opções de anuncio.
               </p>
             </SubDiv>

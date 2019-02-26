@@ -4,7 +4,7 @@ import styled from "styled-components";
 import Background from "../../static/PAGAMENTO.png";
 import Cartao from "../../static/cartão.png";
 import Context from "../../context";
-import Paypal from "../../static/Paypal.png";
+import PaypalBtn from "../particles/paypal";
 import width from "../../config";
 
 const Main = styled.div`
@@ -106,20 +106,6 @@ const SubDivB = styled.div`
   }
 `;
 
-const Btn = styled.button`
-  border: none;
-  border-radius: 100px;
-  height: 0px;
-  margin-left: ${width <= 768 ? "0" : "30vw"};
-  margin-top: ${width <= 768 ? "0" : "40px"};
-  width: 0px;
-  img {
-    height: 60px;
-    margin-top: ${width <= 768 ? "0" : "-20px"};
-    margin-left: ${width <= 768 ? "-120px" : "-50px"};
-  }
-`;
-
 class Pagamento extends Component {
   constructor(props) {
     super(props);
@@ -158,9 +144,7 @@ class Pagamento extends Component {
               <p>Total a pagar</p>
               <h1>{paymentValue}</h1>
             </div>
-            <Btn>
-              <img src={Paypal} alt="Paypal" />
-            </Btn>
+            <PaypalBtn amount={paymentValue} />
           </SubDivB>
         ) : (
           <>
@@ -188,13 +172,11 @@ class Pagamento extends Component {
                 </div>
                 <div>
                   <p>Total a pagar</p>
-                  <h1>{paymentValue}</h1>
+                  <h1>R${paymentValue}</h1>
                 </div>
               </SubDivB>
             </Div>
-            <Btn>
-              <img src={Paypal} alt="Paypal" />
-            </Btn>
+            <PaypalBtn amount={paymentValue} />
           </>
         )}
       </Main>
