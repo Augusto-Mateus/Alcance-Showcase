@@ -86,6 +86,7 @@ const SubDivB = styled.div`
     height: 45px;
     ${width <= 768 && "margin: 22px;"}
     text-align: center;
+    ${width <= 768 && "text-indent: 0px;"}
     width: ${width <= 768 ? "180px" : "14.5vw"};
   }
   input::-webkit-calendar-picker-indicator,

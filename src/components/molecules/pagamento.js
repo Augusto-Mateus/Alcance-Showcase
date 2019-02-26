@@ -138,7 +138,14 @@ class Pagamento extends Component {
               <h1>Nº de Anuncios</h1>
               <hr />
               <p>Tempo de Vinculação</p>
-              <h1>TEMPO</h1>
+              <h1>
+                {promptMonth < 1 || isNaN(promptDay) === true
+                  ? null
+                  : promptMonth + " Meses e "}
+                {promptDay < 0 || isNaN(promptDay) === true
+                  ? "Este não é um prazo valido"
+                  : promptDay + " Dias"}
+              </h1>
             </div>
             <div>
               <p>Total a pagar</p>
