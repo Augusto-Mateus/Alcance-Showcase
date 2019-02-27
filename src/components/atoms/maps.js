@@ -3,6 +3,7 @@ import styled from "styled-components";
 import Context from "../../context";
 
 import MapsApi from "../particles/mapsApi";
+import SearchBox from "../particles/searchbox";
 import width from "../../config";
 
 const Inputs = ["Localização", "Raio"];
@@ -77,6 +78,7 @@ class Maps extends Component {
         <div>
           <div>
             <p>{Inputs[0]}</p>
+            <SearchBox />
           </div>
           <div>
             <p>{Inputs[1]}</p>

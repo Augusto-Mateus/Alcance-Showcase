@@ -149,7 +149,7 @@ class Pagamento extends Component {
             </div>
             <div>
               <p>Total a pagar</p>
-              <h1>{paymentValue}</h1>
+              <h1>R${paymentValue}</h1>
             </div>
             <PaypalBtn amount={paymentValue} />
           </SubDivB>
