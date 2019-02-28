@@ -107,7 +107,7 @@ class Account extends Component {
             <p>Sample</p>
           </div>
         </Div>
-        <Scroller>
+        <Scroller onClick={this.check}>
           <Sample />
           <Sample />
           <Sample />

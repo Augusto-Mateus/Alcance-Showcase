@@ -165,7 +165,7 @@ class Pagamento extends Component {
               <SubDivB>
                 <div>
                   <p>Quantidade de Anuncios</p>
-                  <h1>Nº de Anuncios</h1>
+                  <h1>{this.context.ads}</h1>
                   <hr />
                   <p>Tempo de Vinculação</p>
                   <h1>

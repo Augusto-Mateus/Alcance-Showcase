@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 
+import Context from "../../context";
 import Ranked from "../particles/ranked";
 import width from "../../config";
 
@@ -17,7 +18,7 @@ const Main = styled.div`
   }
 `;
 
-const Scroller = styled.div`
+const Scroller = styled.form`
   border-radius: 50px;
   height: 100%;
   margin-right: -5px;
@@ -44,12 +45,18 @@ class Rank extends Component {
       <Main>
         <Scroller>
           {rankeds.map(ranked => {
-            return <Ranked key={Math.random()} img={ranked} />;
+            return (
+              <div key={Math.random()} onClick={this.Adds}>
+                <Ranked img={ranked} />
+              </div>
+            );
           })}
         </Scroller>
       </Main>
     );
   }
 }
+
+Rank.contextType = Context;
 
 export default Rank;

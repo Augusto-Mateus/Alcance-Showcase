@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 
+import ObjetivosBlocks from "../particles/objetivosBlocks";
+
 //backgrounds
 import Objetivos from "../../static/Objetivos.png";
 import orange from "../../static/orange.png";
@@ -28,45 +30,17 @@ const Main = styled.div`
   flex-direction: column;
   height: 750px;
   justify-content: space-evenly;
+  padding-top: 100px;
   text-align: center;
 `;
 
 const Div = styled.div`
   display: flex;
   flex-wrap: wrap;
-  height: 460px;
+  height: 33vw;
   justify-content: center;
   width: 100%;
 `;
-
-const Btn = styled.button`
-  align-items: center;
-  background-image: url(${props => props.color});
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  border: none;
-  border-radius: 20px;
-  color: #fff;
-  display: flex;
-  filter: ${props => props.toggle};
-  height: 10vw;
-  justify-content: space-between;
-  margin: 0.5%;
-  padding-left: 5vw;
-  transition: 0.3s ease;
-  width: 40%;
-  h4 {
-    font-size: 2vw;
-    pointer-events: none;
-  }
-  img {
-    height: 10vw;
-    pointer-events: none;
-  }
-`;
-
-const colors = [cyan, blue, rose, purple, orange, yellow];
 
 const objetivos = [
   "Impulsionar uma publicação",
@@ -77,68 +51,24 @@ const objetivos = [
   "Promover um evento"
 ];
 
+const colors = [cyan, blue, rose, purple, orange, yellow];
+
 const imgs = [danger, envelope, fireworks, mountain, promotion, thunder];
 
 class Objetivo extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      Impulsionar: false,
-      Receber: false,
-      Gerar: false,
-      Página: false,
-      Aumentar: false,
-      Evento: false
+      check: ""
     };
 
-    // .click()
-
-    this.select = e => {
+    this.check = e => {
       const { id } = e.target;
-      id === "Impulsionar uma publicação" &&
-        this.setState(prevState => ({ Impulsionar: !prevState.Impulsionar }));
-      id === "Receber mensagem" &&
-        this.setState(prevState => ({ Receber: !prevState.Receber }));
-      id === "Gerar trafego para seu site" &&
-        this.setState(prevState => ({ Gerar: !prevState.Gerar }));
-      id === "Promover sua página" &&
-        this.setState(prevState => ({ Página: !prevState.Página }));
-      id === "Aumentar meu alcance" &&
-        this.setState(prevState => ({ Aumentar: !prevState.Aumentar }));
-      id === "Promover um evento" &&
-        this.setState(prevState => ({ Evento: !prevState.Evento }));
-      console.log(
-        this.state.Impulsionar,
-        this.state.Receber,
-        this.state.Gerar,
-        this.state.Página,
-        this.state.Aumentar,
-        this.state.Evento
-      );
+      this.setState({ check: id });
+      window.scrollTo(0, 1570);
     };
   }
-
-  componentDidMount() {
-    console.log(
-      this.state.Impulsionar,
-      this.state.Receber,
-      this.state.Gerar,
-      this.state.Página,
-      this.state.Aumentar,
-      this.state.Evento
-    );
-  }
-
   render() {
-    const {
-      Impulsionar,
-      Receber,
-      Gerar,
-      Página,
-      Aumentar,
-      Evento
-    } = this.state;
-    const states = [Impulsionar, Receber, Gerar, Página, Aumentar, Evento];
     return (
       <Main>
         <h1>
@@ -148,20 +78,14 @@ class Objetivo extends Component {
         <Div>
           {objetivos.map(objetivo => {
             return (
-              <Btn
+              <ObjetivosBlocks
+                execute={this.check}
+                state={this.state.check}
                 key={objetivo}
-                id={objetivo}
-                color={colors[objetivos.indexOf(objetivo)]}
-                onClick={this.select}
-                toggle={
-                  states[objetivos.indexOf(objetivo)] === true
-                    ? "blur(1px) opacity(80%)"
-                    : "none"
-                }
-              >
-                <h4>{objetivo}</h4>
-                <img src={imgs[objetivos.indexOf(objetivo)]} alt="Imagem" />
-              </Btn>
+                master={objetivo}
+                colors={colors[objetivos.indexOf(objetivo)]}
+                img={imgs[objetivos.indexOf(objetivo)]}
+              />
             );
           })}
         </Div>

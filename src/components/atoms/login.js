@@ -92,7 +92,7 @@ class Login extends Component {
       if (firebaseUser) {
         this.setState({ email: firebaseUser.email });
         this.toggle();
-        window.scrollTo(0, 935);
+        window.scrollTo(0, 850);
       } else {
         console.log("Error");
       }

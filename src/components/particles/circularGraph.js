@@ -7,16 +7,16 @@ import width from "../../config";
 
 const loads = ["load 1", "load 2", "load 3", "load 4"];
 const key = [
-  "palavra chave 0",
-  "palavra chave 1",
-  "palavra chave 2",
-  "palavra chave 3",
-  "palavra chave 4",
-  "palavra chave 5",
-  "palavra chave 6",
-  "palavra chave 7",
-  "palavra chave 8",
-  "palavra chave 9"
+  "Sample 0",
+  "Sample 1",
+  "Sample 2",
+  "Sample 3",
+  "Sample 4",
+  "Sample 5",
+  "Sample 6",
+  "Sample 7",
+  "Sample 8",
+  "Sample 9"
 ];
 
 const Main = styled.div`
@@ -207,7 +207,7 @@ class CircularGraph extends Component {
             <ToggleDiv>
               <KeyList>
                 <SubToggle>
-                  <h6>Selecione suas palavras chaves</h6>
+                  <h6>Test</h6>
                   <button onClick={this.toggle}>x</button>
                 </SubToggle>
                 {key.map(keyWords => {

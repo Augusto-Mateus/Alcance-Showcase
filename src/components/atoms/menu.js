@@ -5,6 +5,7 @@ import Section from "../particles/section";
 
 const sections = [
   "HOME",
+  "OBJETIVOS",
   "SEGMENTAÇÃO",
   "PÚBLICO ALVO",
   "RANKING",
@@ -13,7 +14,7 @@ const sections = [
   "CONTAS"
 ];
 
-const scroll = [0, 935, 1570, 2325, 3050, 3850, 4600];
+const scroll = [0, 850, 1570, 2325, 3080, 3850, 4600, 8000];
 
 const Main = styled.div`
   display: flex;

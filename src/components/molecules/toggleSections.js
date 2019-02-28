@@ -9,6 +9,7 @@ import Pagamento from "./pagamento";
 import PublicoAlvo from "./publicoAlvo";
 import Ranking from "./ranking";
 import Segmentacao from "./segmentacao";
+import Objetivo from "./objetivo";
 
 const Main = styled.div`
   display: flex;
@@ -32,26 +33,27 @@ class ToggleSection extends Component {
       <>
         {!logged ? null : (
           <Main>
+            <Objetivo />
             <Segmentacao />
             <SubDivReverse>
               <PublicoAlvo />
-              <NextSectionButton scroll={1570} />
-            </SubDivReverse>
-            <SubDivReverse>
-              <Ranking />
               <NextSectionButton scroll={2325} />
             </SubDivReverse>
             <SubDivReverse>
+              <Ranking />
+              <NextSectionButton scroll={3080} />
+            </SubDivReverse>
+            <SubDivReverse>
               <Duracao />
-              <NextSectionButton scroll={3050} />
+              <NextSectionButton scroll={3850} />
             </SubDivReverse>
             <SubDivReverse>
               <Contas />
               <SubDiv>
                 <Pagamento />
-                <NextSectionButton scroll={4600} />
+                <NextSectionButton scroll={5400} />
               </SubDiv>
-              <NextSectionButton scroll={3850} />
+              <NextSectionButton scroll={4600} />
             </SubDivReverse>
           </Main>
         )}
