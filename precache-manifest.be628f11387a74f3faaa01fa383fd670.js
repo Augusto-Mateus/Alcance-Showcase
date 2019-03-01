@@ -4,7 +4,7 @@ self.__precacheManifest = [
     "url": "/Alcance-Showcase/static/media/calendario.09890bd9.png"
   },
   {
-    "revision": "33bb67037e72e79f376f",
+    "revision": "93245dd1c49fe5f23863",
     "url": "/Alcance-Showcase/static/css/main.a6987f60.chunk.css"
   },
   {
@@ -44,8 +44,8 @@ self.__precacheManifest = [
     "url": "/Alcance-Showcase/static/media/DuraçãoDeCampanha.0e8a3fd3.png"
   },
   {
-    "revision": "33bb67037e72e79f376f",
-    "url": "/Alcance-Showcase/static/js/main.33bb6703.chunk.js"
+    "revision": "93245dd1c49fe5f23863",
+    "url": "/Alcance-Showcase/static/js/main.93245dd1.chunk.js"
   },
   {
     "revision": "bce821312346987ca61839a14bc950a5",
@@ -88,7 +88,7 @@ self.__precacheManifest = [
     "url": "/Alcance-Showcase/static/css/2.11cb2983.chunk.css"
   },
   {
-    "revision": "92f88b903f7b3c04a644b08f216b163d",
+    "revision": "2bcb0b4a9846296fea0348b27c22bb95",
     "url": "/Alcance-Showcase/index.html"
   }
 ];
