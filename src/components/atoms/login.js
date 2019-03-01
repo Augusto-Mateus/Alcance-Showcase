@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import * as firebase from "firebase";
 import FirebaseAuth from "react-firebaseui/FirebaseAuth";
+import MdPerson from "react-ionicons/lib/MdPerson";
 
 import Button from "../particles/button";
 import Input from "../particles/input";
@@ -10,12 +11,14 @@ import width from "../../config";
 
 const Main = styled.div`
   align-items: center;
-  background-color: #fff;
+  ${props => props.color}
   border-radius: 50px;
+  ${props => props.letter};
   display: flex;
   flex-direction: column;
   height: 400px;
-  justify-content: center;
+  justify-content: ${props => props.flex};
+  transition: 0.3 ease;
   width: ${width <= 768 ? "300px" : "360px"};
 
   p {
@@ -43,6 +46,31 @@ const FacebookBtn = styled(FirebaseAuth)`
     margin: 0;
     width: 100%;
   }
+`;
+
+const UserIcon = styled.div`
+  align-items: center;
+  background-color: #ddd;
+  border: solid 3px #fff;
+  border-radius: 100vw;
+  display: flex;
+  height: 130px;
+  justify-content: center;
+  width: 130px;
+`;
+
+const Logout = styled.button`
+  background-color: rgba(256, 256, 256, 0.5);
+  border: none;
+  border-radius: 100vw;
+  border-radius: 20px;
+  color: #fff;
+  font-size: 15px;
+  font-weight: bold;
+  height: 35px;
+  letter-spacing: 2px;
+  margin: 5px;
+  width: 50% !important;
 `;
 
 class Login extends Component {
@@ -102,7 +130,15 @@ class Login extends Component {
   render() {
     const { logged } = this.context;
     return (
-      <Main>
+      <Main
+        flex={logged ? "space-evenly" : "center"}
+        color={
+          logged
+            ? "background-image: linear-gradient(to right, #00dfc5, #00dfc5, #069dc8);"
+            : "background-color: #fff;"
+        }
+        letter={logged ? "color: #fff; font-weight: bold;" : "color: #000;"}
+      >
         {!logged ? (
           <>
             <FacebookBtn
@@ -123,11 +159,14 @@ class Login extends Component {
           </>
         ) : (
           <>
+            <UserIcon>
+              <MdPerson src="" alt="User Image" fontSize="100px" color="#bbb" />
+            </UserIcon>
             <p>
               Bem Vindo <br />
               {this.state.email}
             </p>
-            <Button event={this.logout} name="Logout" />
+            <Logout onClick={this.logout}>LogOut</Logout>
           </>
         )}
       </Main>

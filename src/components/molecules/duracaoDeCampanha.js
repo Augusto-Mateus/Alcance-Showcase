@@ -115,7 +115,11 @@ class DuracaoDeCampanha extends Component {
       this.valueMonth.toString().length === 1
         ? "0" + this.valueMonth
         : this.valueMonth;
-    this.day = this.newDate.getDate();
+    this.valueDay = this.newDate.getDate();
+    this.day =
+      this.valueDay.toString().length === 1
+        ? "0" + this.valueDay
+        : this.valueDay;
     this.defaultDate = this.year + "-" + this.month + "-" + this.day;
 
     //Input prompt values
@@ -141,18 +145,10 @@ class DuracaoDeCampanha extends Component {
     const promptMonth = Math.floor(
       (this.state.finalDate - this.state.initialDate) / 86400000 / 30
     );
+
     const promptDay =
-      this.valueMonth >= 2
-        ? (this.state.finalDate - this.state.initialDate) / 86400000 >= 30
-          ? (this.state.finalDate - this.state.initialDate) / 86400000 -
-            27 -
-            30 * (promptMonth - 1) -
-            Math.ceil((2 * promptMonth) / 4)
-          : (this.state.finalDate - this.state.initialDate) / 86400000
-        : (this.state.finalDate - this.state.initialDate) / 86400000 >= 30
-        ? (this.state.finalDate - this.state.initialDate) / 86400000 -
-          30 * promptMonth -
-          Math.ceil((2 * promptMonth) / 4)
+      (this.state.finalDate - this.state.initialDate) / 86400000 >= 30
+        ? (this.state.finalDate - this.state.initialDate) / 86400000 - 31
         : (this.state.finalDate - this.state.initialDate) / 86400000;
     return (
       <Main>
@@ -176,10 +172,17 @@ class DuracaoDeCampanha extends Component {
               />
               <p>Tempo de duração da campanha</p>
               <h4>
-                {promptMonth < 1 || isNaN(promptDay) === true
+                {promptMonth < 1 ||
+                promptMonth >= 2 ||
+                (promptMonth === 1 && promptDay > 0) ||
+                isNaN(promptDay) === true
                   ? null
-                  : promptMonth + " Meses e "}
-                {promptDay < 0 || isNaN(promptDay) === true
+                  : promptMonth + " Mes"}
+                {promptMonth === 1
+                  ? null
+                  : promptDay < 0 ||
+                    promptMonth >= 2 ||
+                    isNaN(promptDay) === true
                   ? "Este não é um prazo valido"
                   : promptDay + " Dias"}
               </h4>
@@ -214,10 +217,15 @@ class DuracaoDeCampanha extends Component {
             </Div>
             <p>Tempo de duração da campanha</p>
             <h4>
-              {promptMonth < 1 || isNaN(promptDay) === true
+              {promptMonth < 1 ||
+              promptMonth >= 2 ||
+              (promptMonth === 1 && promptDay > 0) ||
+              isNaN(promptDay) === true
                 ? null
-                : promptMonth + " Meses e "}
-              {promptDay < 0 || isNaN(promptDay) === true
+                : promptMonth + " Mes"}
+              {promptMonth === 1
+                ? null
+                : promptDay < 0 || promptMonth >= 2 || isNaN(promptDay) === true
                 ? "Este não é um prazo valido"
                 : promptDay + " Dias"}
             </h4>

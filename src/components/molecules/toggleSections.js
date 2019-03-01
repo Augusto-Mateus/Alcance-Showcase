@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 import Contas from "./contas";
 import Context from "../../context";
+import Cadastro from "../../components/molecules/cadastro";
 import Duracao from "./duracaoDeCampanha";
 import NextSectionButton from "../particles/nextSectionButton";
 import Pagamento from "./pagamento";
@@ -31,7 +32,11 @@ class ToggleSection extends Component {
     const { logged } = this.context;
     return (
       <>
-        {!logged ? null : (
+        {!logged ? (
+          <Main>
+            <Cadastro />
+          </Main>
+        ) : (
           <Main>
             <Objetivo />
             <Segmentacao />

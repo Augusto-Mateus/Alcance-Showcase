@@ -116,18 +116,10 @@ class Pagamento extends Component {
   render() {
     const { paymentValue, initialDate, finalDate } = this.context;
     const promptMonth = Math.floor((finalDate - initialDate) / 86400000 / 30);
+
     const promptDay =
-      this.valueMonth >= 2
-        ? (finalDate - initialDate) / 86400000 >= 30
-          ? (finalDate - initialDate) / 86400000 -
-            27 -
-            30 * (promptMonth - 1) -
-            Math.ceil((2 * promptMonth) / 4)
-          : (finalDate - initialDate) / 86400000
-        : (finalDate - initialDate) / 86400000 >= 30
-        ? (finalDate - initialDate) / 86400000 -
-          30 * promptMonth -
-          Math.ceil((2 * promptMonth) / 4)
+      (finalDate - initialDate) / 86400000 >= 30
+        ? (finalDate - initialDate) / 86400000 - 31
         : (finalDate - initialDate) / 86400000;
     return (
       <Main>
@@ -139,10 +131,17 @@ class Pagamento extends Component {
               <hr />
               <p>Tempo de Vinculação</p>
               <h1>
-                {promptMonth < 1 || isNaN(promptDay) === true
+                {promptMonth < 1 ||
+                promptMonth >= 2 ||
+                (promptMonth === 1 && promptDay > 0) ||
+                isNaN(promptDay) === true
                   ? null
-                  : promptMonth + " Meses e "}
-                {promptDay < 0 || isNaN(promptDay) === true
+                  : promptMonth + " Mes"}
+                {promptMonth === 1
+                  ? null
+                  : promptDay < 0 ||
+                    promptMonth >= 2 ||
+                    isNaN(promptDay) === true
                   ? "Este não é um prazo valido"
                   : promptDay + " Dias"}
               </h1>
@@ -169,10 +168,17 @@ class Pagamento extends Component {
                   <hr />
                   <p>Tempo de Vinculação</p>
                   <h1>
-                    {promptMonth < 1 || isNaN(promptDay) === true
+                    {promptMonth < 1 ||
+                    promptMonth >= 2 ||
+                    (promptMonth === 1 && promptDay > 0) ||
+                    isNaN(promptDay) === true
                       ? null
-                      : promptMonth + " Meses e "}
-                    {promptDay < 0 || isNaN(promptDay) === true
+                      : promptMonth + " Mes"}
+                    {promptMonth === 1
+                      ? null
+                      : promptDay < 0 ||
+                        promptMonth >= 2 ||
+                        isNaN(promptDay) === true
                       ? "Este não é um prazo valido"
                       : promptDay + " Dias"}
                   </h1>
