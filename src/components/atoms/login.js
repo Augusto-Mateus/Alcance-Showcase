@@ -79,6 +79,12 @@ class Login extends Component {
     this.toggle = () =>
       this.context.setContext(prevContext => ({ logged: !prevContext.logged }));
 
+    this.subToggle = () => {
+      this.context.setContext(prevContext => ({
+        register: !prevContext.register
+      }));
+    };
+
     this.uiConfig = {
       signInflow: "popup",
       signInOptions: [firebase.auth.FacebookAuthProvider.PROVIDER_ID],
@@ -155,7 +161,7 @@ class Login extends Component {
             <Button name="ENTRAR" event={this.login} />
             <hr />
             <a href="sample">Não possui conta?</a>
-            <Button name="CADASTRAR-SE" />
+            <Button name="CADASTRAR-SE" event={this.subToggle} />
           </>
         ) : (
           <>

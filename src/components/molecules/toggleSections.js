@@ -29,13 +29,13 @@ const SubDiv = styled.div`
 
 class ToggleSection extends Component {
   render() {
-    const { logged } = this.context;
+    const { logged, register } = this.context;
     return (
       <>
         {!logged ? (
-          <Main>
+          register ? (
             <Cadastro />
-          </Main>
+          ) : null
         ) : (
           <Main>
             <Objetivo />

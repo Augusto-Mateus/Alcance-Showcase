@@ -124,6 +124,7 @@ class Cadastro extends Component {
   }
 
   componentDidMount() {
+    window.scrollTo(0, 1000);
     firebase.auth().onAuthStateChanged(firebaseUser => {
       !firebaseUser && console.log("Error");
     });
