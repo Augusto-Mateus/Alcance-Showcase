@@ -7,6 +7,8 @@ import width from "../../config";
 
 const rankeds = [0, 1, 2, 1];
 
+const title = ["Title1", "Title2", "Title3", "Title4"];
+
 const Main = styled.div`
   background-image: linear-gradient(to bottom, #f4d8dc, white);
   border-radius: 50px;
@@ -40,14 +42,30 @@ const Scroller = styled.form`
 `;
 
 class Rank extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+    this.check = e => {
+      const { id } = e.target;
+      this.setState({ id });
+      console.log(this.context);
+    };
+  }
+
   render() {
+    const { checked } = this.state;
     return (
       <Main>
         <Scroller>
-          {rankeds.map(ranked => {
+          {title.map(titles => {
             return (
-              <div key={Math.random()} onClick={this.Adds}>
-                <Ranked img={ranked} />
+              <div key={titles}>
+                <Ranked
+                  event={this.check}
+                  img={rankeds[title.indexOf(titles)]}
+                  checked={checked}
+                  info={titles}
+                />
               </div>
             );
           })}

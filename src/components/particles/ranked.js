@@ -13,16 +13,17 @@ const porcentagem = 80;
 const Main = styled.div`
   align-items: center;
   background-color: #fff;
+  ${props => props.focus};
   border-radius: 40px;
   color: #626262;
   display: flex;
-  filter: ${props => props.filter};
   height: 120px;
   justify-content: flex-start;
   margin-bottom: 15px;
   transition: 0.3s ease;
   width: 100%;
   div {
+    pointer-events: none;
     div {
       display: flex;
     }
@@ -40,6 +41,7 @@ const Img = styled.div`
   height: 70px;
   justify-content: center;
   margin: 0px 24px 0px 24px;
+  pointer-events: none;
   width: 70px;
   img {
     height: 40px;
@@ -80,30 +82,15 @@ const Label = styled.p`
 `;
 
 class Ranked extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-
-    this.check = () => {
-      this.setState(prevState => ({ checked: !prevState.checked }));
-    };
-  }
-
   render() {
-    const { checked } = this.state;
     return (
-      <Main
-        value={checked}
-        onClick={this.check}
-        filter={checked === true ? "opacity(70%)" : "none"}
-        check={checked}
-      >
+      <Main onClick={this.props.event} id={this.props.info}>
         <Img>
           <img alt="Logo" src={imgs[this.props.img]} />
         </Img>
         <div>
           <SmallTxt>Marca</SmallTxt>
-          <p>Info</p>
+          <p>{this.props.info}</p>
           <SmallTxt>Recomendação:</SmallTxt>
           <div>
             <Graph>

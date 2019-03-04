@@ -1,49 +1,41 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 import { width, key } from "../../config";
+import Context from "../../context";
 
 const Main = styled.div`
   align-self: center;
-  border-radius: 25px;
-  height: ${width <= 768 ? "190px" : "320px"};
-  width: ${width <= 768 ? "250px" : "400px"};
+  border-radius: 15px;
+  overflow: hidden;
 `;
 
 class MapsApi extends Component {
-  componentDidMount() {
-    this.renderMap();
-  }
-
-  renderMap = () => {
-    loadScript(
-      "https://maps.googleapis.com/maps/api/js?key=" + key + "&callback=initMap"
-    );
-    window.initMap = this.initMap;
-  };
-
-  initMap = () => {
-    new window.google.maps.Map(document.getElementById("map"), {
-      center: { lat: -23.5209642, lng: -46.7466352 },
-      zoom: 14,
-      disableDefaultUI: true
-    });
-  };
   render() {
+    const Localização = this.context;
+    const localização =
+      Localização === ""
+        ? "R.+Sacadura+Cabral+248+Lapa+São+Paulo+SP"
+        : Localização;
+    const url =
+      "https://www.google.com/maps/embed/v1/search?q=" +
+      localização +
+      "&key=" +
+      key;
     return (
-      <>
-        <Main title="Google Maps" id="map" />
-      </>
+      <Main>
+        <iframe
+          width={width <= 768 ? "250px" : "400px"}
+          height={width <= 768 ? "190px" : "370px"}
+          frameBorder="0"
+          src={url}
+          title="Maps"
+          allowFullScreen
+        />
+      </Main>
     );
   }
 }
 
-function loadScript(url) {
-  var index = window.document.getElementsByTagName("script")[0];
-  var script = window.document.createElement("script");
-  script.src = url;
-  script.async = true;
-  script.defer = true;
-  index.parentNode.insertBefore(script, index);
-}
+MapsApi.contextType = Context;
 
 export default MapsApi;

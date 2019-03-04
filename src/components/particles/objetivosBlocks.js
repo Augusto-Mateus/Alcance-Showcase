@@ -1,16 +1,18 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 
+// 2d29d2
+
 const Main = styled.div`
   align-items: center;
   background-image: url(${props => props.color});
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  ${props => props.focus}
   border-radius: 20px;
   color: #fff;
   display: flex;
-  filter: ${props => props.filter};
   height: 9vw;
   justify-content: space-between;
   margin: 0.5%;
@@ -35,8 +37,8 @@ class ObjetivosBlocks extends Component {
         onClick={this.props.execute}
         check={this.props.state}
         id={this.props.master}
-        filter={
-          this.props.master === this.props.state ? "opacity(70%)" : "none"
+        focus={
+          this.props.master === this.props.state && "border:solid #2d29d2 2px;"
         }
       >
         <h4>{this.props.master}</h4>

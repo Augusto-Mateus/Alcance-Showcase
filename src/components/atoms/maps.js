@@ -3,10 +3,10 @@ import styled from "styled-components";
 import Context from "../../context";
 
 import MapsApi from "../particles/mapsApi";
-import SearchBox from "../particles/searchbox";
 import width from "../../config";
 
 const Inputs = ["Localização", "Raio"];
+const type = ["text", "number"];
 
 const Main = styled.div`
   align-items: center;
@@ -16,7 +16,7 @@ const Main = styled.div`
   display: flex;
   flex-direction: column;
   height: ${width <= 768 ? "450px" : "580px"};
-  justify-content: center;
+  justify-content: space-evenly;
   width: ${width <= 768 ? "300px" : "550px"};
 
   div {
@@ -25,7 +25,7 @@ const Main = styled.div`
     div {
       display: flex;
       flex-direction: column;
-      margin: 12px;
+      margin-right: 12px;
       p {
         margin-bottom: 5px;
       }
@@ -66,27 +66,62 @@ const Txt = styled.p`
 class Maps extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      Localização: "",
-      Raio: ""
+    this.state = {};
+    this.Local = e => {
+      const { value } = e.target;
+      this.context.setContext({
+        Localização: value
+          .replace(" ", "+")
+          .replace(" ", "+")
+          .replace(" ", "+")
+          .replace(" ", "+")
+          .replace(" ", "+")
+          .replace(" ", "+")
+          .replace(" ", "+")
+          .replace(" ", "+")
+          .replace(" ", "+")
+          .replace(" ", "+")
+      });
+    };
+    this.Radius = e => {
+      const { value } = e.target;
+      this.context.setContext({
+        Radius: value
+      });
     };
   }
 
+  componentDidMount() {
+    this.context.setContext({
+      Localização: "R.+Sacadura+Cabral+248+Lapa+São+Paulo+SP",
+      Radius: 0
+    });
+  }
+
   render() {
+    const { Localização, Raio } = this.state;
     return (
       <Main>
         <div>
           <div>
             <p>{Inputs[0]}</p>
-            <SearchBox />
+            <input
+              placeholder={Inputs[0]}
+              type={type[0]}
+              onChange={this.Local}
+            />
           </div>
           <div>
             <p>{Inputs[1]}</p>
-            <input placeholder="Km" type="number" />
+            <input
+              placeholder={Inputs[1]}
+              type={type[1]}
+              onChange={this.Radius}
+            />
           </div>
         </div>
         <div>
-          <MapsApi />
+          <MapsApi local={Localização} raio={Raio} />
           <Div>
             <p>Alcance diário estimado em pessoas</p>
             <Txt>2.000.000 as 3.500.000</Txt>
